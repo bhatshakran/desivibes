@@ -9,7 +9,7 @@ const LatestProducts: React.FC = () => {
         <h2 className=' font-josefinsans text-3xl lg:text-[46px] w-full text-center text-primary font-bold'>
           Latest Products
         </h2>
-        <div className='filter flex justify-center mt-6 gap-4 text-primary font-lato text-[18px]'>
+        <div className='filter flex justify-center mt-6 gap-4 text-primary font-lato text-[14px] lg:text-[18px]'>
           <p className={filterHoverClass}>New arrivals</p>
           <p className={filterHoverClass}>Best Seller</p>
           <p className={filterHoverClass}> Featured</p>
