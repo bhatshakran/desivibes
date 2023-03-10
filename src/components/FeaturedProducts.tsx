@@ -2,7 +2,7 @@ import Card from './Card';
 
 const FeaturedProducts: React.FC = () => {
   return (
-    <section className='bg-white pt-20 pb-10 lg:pt-[120px] lg:pb-20'>
+    <section className='bg-white pt-20 pb-10 lg:pt-[120px] lg:pb-20 mt-24'>
       <div className='container mx-auto'>
         <h2 className=' font-josefinsans text-4xl lg:text-[42px] w-full text-center text-text'>
           Featured Products
