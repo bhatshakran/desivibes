@@ -29,32 +29,32 @@ const Navbar: React.FC = () => {
               >
                 <ul className='block lg:flex'>
                   <li>
-                    <a className='text-textblue hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
                       Home
                     </a>
                   </li>
                   <li>
-                    <a className='text-textblue hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
                       Pages
                     </a>
                   </li>
                   <li>
-                    <a className='text-textblue hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
                       Products
                     </a>
                   </li>
                   <li>
-                    <a className='text-textblue hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
                       Blog
                     </a>
                   </li>
                   <li>
-                    <a className='text-textblue hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
                       Shop
                     </a>
                   </li>
                   <li>
-                    <a className='text-textblue hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
                       Contact
                     </a>
                   </li>
