@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className='relative z-10 bg-lightblue pt-20 pb-10 lg:pt-[120px] lg:pb-20 font-lato'>
+    <footer className='relative z-10 px-8 lg:px-0 bg-lightblue pt-20 pb-10 lg:pt-[120px] lg:pb-20 font-lato'>
       <div className='container mx-auto max-w-5xl'>
         <div className='-mx-4 flex flex-wrap'>
           <div className='w-full px-4 sm:w-2/3 lg:w-3/12'>
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     SaaS Development
                   </a>
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Our Products
                   </a>
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     User Flow
                   </a>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     User Strategy
                   </a>
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     About TailGrids
                   </a>
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Contact & Support
                   </a>
@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Success History
                   </a>
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Setting & Privacy
                   </a>
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Premium Support
                   </a>
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Our Services
                   </a>
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Know Our Team
                   </a>
@@ -149,7 +149,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href=''
-                    className='text-subtext hover:text-secondary mb-2 inline-block text-base leading-loose'
+                    className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
                     Download App
                   </a>

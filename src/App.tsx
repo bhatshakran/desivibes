@@ -1,19 +1,20 @@
 import './app.css';
-import Banner from './components/Banner';
-import FeaturedProducts from './components/FeaturedProducts';
-import Footer from './components/Footer';
-import LatestProducts from './components/LatestProducts';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Account/Login';
 import Navbar from './components/Navbar';
-import Services from './components/Services';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className='App '>
       <Navbar />
-      <Banner />
-      <FeaturedProducts />
-      <LatestProducts />
-      <Services />
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/account' element={<Login />} />
+        </Routes>
+      </Router>
       <Footer />
     </div>
   );
