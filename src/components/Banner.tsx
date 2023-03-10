@@ -1,5 +1,7 @@
 import hoodie from '../images/hoodie.png';
 import tshirt from '../images/tshirt.png';
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
 const Banner = () => {
   return (
     <div className='bg-lightblue flex flex-wrap items-center justify-center h-auto  lg:h-[764px] gap-y-16 pb-8 lg:pb-0'>
@@ -11,13 +13,15 @@ const Banner = () => {
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum,
           voluptatum.
         </p>
-        <button className='font-josefin bg-secondary text-white text-[17px] p-2 rounded-sm max-w-[120px]'>
+        <button className='font-josefinsans bg-secondary text-white text-[17px] p-2 rounded-md max-w-[120px]'>
           {' '}
           Shop Now
         </button>
       </div>
       <div className='w-full lg:w-1/2 px-8 font-josefinsans flex items-center justify-center'>
-        <div className='arrow-lef text-5xl cursor-pointer'>{'<'}</div>
+        <div className='arrow-lef text-4xl cursor-pointer'>
+          <BsFillArrowLeftCircleFill />
+        </div>
         <div className='w-[250px] sm:w-[350px] lg:w-[500px]  rounded-lg flex overflow-hidden'>
           <img
             src={hoodie}
@@ -30,7 +34,9 @@ const Banner = () => {
             className='w-[250px] sm:w-[350px] lg:w-[500px] rounded-lg'
           />
         </div>
-        <div className='arrow-lef text-5xl cursor-pointer'>{'>'}</div>
+        <div className='arrow-lef text-4xl cursor-pointer'>
+          <BsFillArrowRightCircleFill />
+        </div>
       </div>
     </div>
   );

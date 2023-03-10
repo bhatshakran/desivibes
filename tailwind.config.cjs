@@ -16,6 +16,8 @@ module.exports = {
         viola: '#7E33E0',
         gray: '#F5F6F8',
         subtext: '#8A8FB9',
+        productbg: '#F6F7FB',
+        sectionheading: '#1A0B5B',
       },
     },
   },
