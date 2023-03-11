@@ -4,9 +4,9 @@ const Navbar: React.FC = () => {
   return (
     <header className='flex w-full items-center bg-white'>
       <div className='container mx-auto'>
-        <div className='relative -mx-4 flex items-center justify-center'>
-          <div className='w-auto max-w-[200px]'>
-            <a className='block  py-5 text-4xl font-josefinsans font-bold text-primary'>
+        <div className='relative -mx-4 flex items-center justify-start'>
+          <div className='w-auto max-w-[200px] mx-8 lg:mx-0'>
+            <a className='block  py-5 text-2xl lg:text-4xl font-josefinsans font-bold text-primary'>
               Desi Vibes
             </a>
           </div>
@@ -60,7 +60,10 @@ const Navbar: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a
+                      href='/contact'
+                      className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
+                    >
                       Contact
                     </a>
                   </li>
