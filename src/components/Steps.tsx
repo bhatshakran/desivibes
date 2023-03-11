@@ -2,7 +2,7 @@ import React from 'react';
 
 const Steps: React.FC<any> = ({ heading, pageName }) => {
   return (
-    <div className='h-[140px] lg:h-[170px] bg-lightblue px-16 lg:px-36 py-8'>
+    <div className='h-[140px]  bg-lightblue px-16 lg:px-36 py-8'>
       <div className='font-josefinsans text-[24px] lg:text-[36px] text-secondary'>
         {heading}
       </div>
