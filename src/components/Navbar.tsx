@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 const Navbar: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <header className='flex w-full items-center bg-white'>
+    <header className='flex w-full items-center bg-white py-4 lg:py-0'>
       <div className='container mx-auto'>
-        <div className='relative -mx-4 flex items-center justify-start'>
-          <div className='w-auto max-w-[200px] mx-8 lg:mx-0'>
-            <a className='block  py-5 text-2xl lg:text-4xl font-josefinsans font-bold text-primary'>
+        <div className='relative  flex items-center justify-between'>
+          <div className='mx-16 w-auto lg:mx-0'>
+            <a
+              className='block   text-2xl md:text-3xl  font-josefinsans font-bold text-primary'
+              href='/'
+            >
               Desi Vibes
             </a>
           </div>

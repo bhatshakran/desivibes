@@ -12,10 +12,10 @@ const Contact: React.FC = () => {
       <div>
         <section className='flex flex-wrap gap-8 mt-16 justify-between px-8 lg:px-36'>
           <div className='w-full lg:w-2/5'>
-            <h2 className='font-josefinsans text-[36px] text-primary'>
+            <h2 className='font-josefinsans text-[28px] lg:text-[36px] text-primary mb-6'>
               Information about us
             </h2>
-            <p className='font-lato text-subtext text-[18px]'>
+            <p className='font-lato text-subtext text-base lg:text-[18px]'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
               distinctio dolor voluptatibus eligendi eaque itaque saepe
               veritatis dolorem perferendis explicabo!
@@ -27,10 +27,10 @@ const Contact: React.FC = () => {
                 <HomeSvg />
               </div>
               <div className='w-full'>
-                <h4 className='text-dark mb-1 text-xl font-bold'>
+                <h4 className='text-primary mb-1 text-xl font-bold'>
                   Our Location
                 </h4>
-                <p className='text-body-color text-base'>
+                <p className='text-subtext text-base'>
                   99 S.t Jomblo Park Pekanbaru 28292. Indonesia
                 </p>
               </div>
@@ -40,12 +40,10 @@ const Contact: React.FC = () => {
                 <PhoneSvg />
               </div>
               <div className='w-full'>
-                <h4 className='text-dark mb-1 text-xl font-bold'>
+                <h4 className='text-primary mb-1 text-xl font-bold'>
                   Phone Number
                 </h4>
-                <p className='text-body-color text-base'>
-                  (+62)81 414 257 9980
-                </p>
+                <p className='text-subtext text-base'>(+62)81 414 257 9980</p>
               </div>
             </div>
             <div className='mb-8 flex w-full max-w-[370px]'>
@@ -53,21 +51,21 @@ const Contact: React.FC = () => {
                 <EmailSvg />
               </div>
               <div className='w-full'>
-                <h4 className='text-dark mb-1 text-xl font-bold'>
+                <h4 className='text-primary mb-1 text-xl font-bold'>
                   Email Address
                 </h4>
-                <p className='text-body-color text-base'>info@yourdomain.com</p>
+                <p className='text-subtext text-base'>info@yourdomain.com</p>
               </div>
             </div>
           </div>
         </section>
         <section className='relative z-10 overflow-hidden bg-white py-20 lg:py-[120px] px-8 lg:px-36'>
           <div className='container mx-auto'>
-            <div className=' flex flex-wrap flex-col-reverse lg:flex-col lg:justify-between gap-4'>
-              <div className='w-full lg:w-2/5 px-4  '>
+            <div className=' flex flex-wrap items-center justify-between   gap-4'>
+              <div className='w-full lg:w-2/5  '>
                 <div className='mb-12 max-w-[570px] lg:mb-0'>
-                  <h2 className=' mb-6 text-[36px] font-bold uppercase text-primary font-josefinsans'>
-                    GET IN TOUCH
+                  <h2 className='font-josefinsans text-[28px] lg:text-[36px] text-primary mb-6'>
+                    Get in touch with us
                   </h2>
                   <p className='text-subtext font-lato mb-9 text-base leading-relaxed'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -117,8 +115,8 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className='w-full lg:w-2/5 lg:p-16 '>
-                <img src={contact} alt='' className='w-full object-contain' />
+              <div className='w-full lg:w-2/5 lg:p-8 '>
+                <img src={contact} alt='' className='w-[300px] lg:w-full ' />
               </div>
             </div>
           </div>
