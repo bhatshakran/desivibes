@@ -17,7 +17,7 @@ interface CardProps {
 }
 const Card: React.FC<CardProps> = ({ id, cardtype }) => {
   return (
-    <div className='min-w-[150px] w-[270px] h-[370px] overflow-hidden bg-productbg rounded-lg shadow-xl'>
+    <div className='min-w-[150px] w-[270px] h-[370px] overflow-hidden bg-productbg rounded-lg shadow-md'>
       <div className=' overflow-hidden rounded-lg w-full p-3'>
         <img
           src={cardtype === 'latest' ? latest[id] : images[id]}
