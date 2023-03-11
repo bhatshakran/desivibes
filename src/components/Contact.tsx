@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className='relative z-10 overflow-hidden bg-white py-20 lg:py-[120px] px-8 lg:px-36'>
+        <section className='relative z-10 overflow-hidden bg-white mt-12 pb-20 lg:pb-[120px] px-8 lg:px-36'>
           <div className='container mx-auto'>
             <div className=' flex flex-wrap items-center justify-between   gap-4'>
               <div className='w-full lg:w-2/5  '>
