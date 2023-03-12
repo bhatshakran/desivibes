@@ -6,7 +6,7 @@ const Steps: React.FC<any> = ({ heading, pageName }) => {
       <div className='font-josefinsans text-[24px] lg:text-[36px] text-secondary'>
         {heading}
       </div>
-      <p className='font-lato text-subtext text-[14px] lg:text-[18px]'>
+      <p className='font-lato text-subtext text-[14px] lg:text-[16px]'>
         Home - Pages - <span className='text-secondary'>{pageName}</span>
       </p>
     </div>

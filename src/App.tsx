@@ -6,10 +6,11 @@ import Footer from './components/Footer';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 import OrderComplete from './components/Order/OrderComplete';
+import Shop from './components/Shop';
 
 function App() {
   return (
-    <div className='App '>
+    <div className='App'>
       <Navbar />
       <Router>
         <Routes>
@@ -18,6 +19,7 @@ function App() {
           <Route path='/account' element={<Login />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/ordercomplete' element={<OrderComplete />} />
+          <Route path='/shop' element={<Shop />} />
         </Routes>
       </Router>
       <Footer />

@@ -18,8 +18,10 @@ module.exports = {
         subtext: '#8A8FB9',
         productbg: '#F6F7FB',
         sectionheading: '#1A0B5B',
+        checkbox: '#FFDBF1',
+        filterTxt: '#7E81A2',
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

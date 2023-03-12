@@ -58,7 +58,10 @@ const Navbar: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'>
+                    <a
+                      className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
+                      href='/shop'
+                    >
                       Shop
                     </a>
                   </li>
