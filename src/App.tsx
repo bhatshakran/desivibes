@@ -1,4 +1,9 @@
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  BrowserRouter as Router,
+  Outlet,
+} from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Account/Login';
 import Navbar from './components/Navbar';
@@ -9,25 +14,42 @@ import OrderComplete from './components/Order/OrderComplete';
 import Shop from './components/Shop';
 import ProductCard from './components/Shop/Product/ProductCard';
 import Cart from './components/Cart';
+import Admin from './components/Admin';
 
 function App() {
   return (
     <div className='App'>
-      <Navbar />
       <Router>
         <Routes>
-          <Route path='*' element={<NotFound />} />
-          <Route path='/' element={<Home />} />
-          <Route path='/account' element={<Login />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/ordercomplete' element={<OrderComplete />} />
-          <Route path='/shop' element={<Shop />} />
-          <Route path='/shop/:slug' element={<ProductCard />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/' element={<LayoutsWithNavbar />}>
+            <Route path='*' element={<NotFound />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/account' element={<Login />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/ordercomplete' element={<OrderComplete />} />
+            <Route path='/shop' element={<Shop />} />
+            <Route path='/shop/:slug' element={<ProductCard />} />
+            <Route path='/cart' element={<Cart />} />
+          </Route>
+          <Route path='/admin' element={<Admin />} />
         </Routes>
       </Router>
-      <Footer />
     </div>
+  );
+}
+
+function LayoutsWithNavbar() {
+  return (
+    <>
+      {/* Your navbar component */}
+      <Navbar />
+
+      {/* This Outlet is the place in which react-router will render your components that you need with the navbar */}
+      <Outlet />
+
+      {/* You can add a footer to get fancy in here :) */}
+      <Footer />
+    </>
   );
 }
 
