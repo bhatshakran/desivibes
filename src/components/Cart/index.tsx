@@ -6,176 +6,88 @@ const Cart: React.FC = () => {
   return (
     <section>
       <Steps heading='Shopping Cart' pageName='Cart' />
-      <section className='py-[120px]'>
+      <section className='py-16 lg:py-[120px]'>
         <div className='grid sm:px-10 lg:grid-cols-3 lg:px-20 xl:px-32'>
-          <div className='px-4 pt-8 w-full col-span-2'>
+          <div className='px-4 pt-8 w-full col-span-3 lg:col-span-2'>
             <p className='text-3xl lg:text-[46px] font-josefinsans text-primary text-center lg:text-start'>
               Order Summary
             </p>
             <p className='text-subtext font-lato text-lg lg:text-2xl text-center lg:text-start'>
               Check your items. And proceed to checkout
             </p>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 md:gap-4  mt-8 space-y-3  bg-white px-2 py-4 sm:px-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 md:gap-4  mt-8 space-y-3  bg-white px-2 py-16 sm:px-6 '>
               <CartItem />
               <CartItem />
               <CartItem />
               <CartItem />
+            </div>
+
+            <div className='lg:ml-16 mt-8 w-full flex justify-center lg:justify-start'>
+              <button className='bg-secondary py-2 px-4 rounded-md text-white font-lato '>
+                Clear Cart
+              </button>
             </div>
           </div>
-          {/*  <div className='mt-10 bg-gray-50 px-4 pt-8 lg:mt-0'>
-            <p className='text-xl font-medium'>Payment Details</p>
-            <p className='text-gray-400'>
-              Complete your order by providing your payment details.
-            </p>
-            <div className=''>
-              <label className='mt-4 mb-2 block text-sm font-medium'>
-                Email
-              </label>
-              <div className='relative'>
-                <input
-                  type='text'
-                  id='email'
-                  name='email'
-                  className='w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                  placeholder='your.email@gmail.com'
-                />
-                <div className='pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    className='h-4 w-4 text-gray-400'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    stroke-width='2'
-                  >
-                    <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      d='M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207'
-                    />
-                  </svg>
-                </div>
-              </div>
-              <label className='mt-4 mb-2 block text-sm font-medium'>
-                Card Holder
-              </label>
-              <div className='relative'>
-                <input
-                  type='text'
-                  id='card-holder'
-                  name='card-holder'
-                  className='w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                  placeholder='Your full name here'
-                />
-                <div className='pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    className='h-4 w-4 text-gray-400'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    stroke-width='2'
-                  >
-                    <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      d='M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z'
-                    />
-                  </svg>
-                </div>
-              </div>
-              <label className='mt-4 mb-2 block text-sm font-medium'>
-                Card Details
-              </label>
-              <div className='flex'>
-                <div className='relative w-7/12 flex-shrink-0'>
-                  <input
-                    type='text'
-                    id='card-no'
-                    name='card-no'
-                    className='w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                    placeholder='xxxx-xxxx-xxxx-xxxx'
-                  />
-                  <div className='pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3'>
-                    <svg
-                      className='h-4 w-4 text-gray-400'
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='16'
-                      height='16'
-                      fill='currentColor'
-                      viewBox='0 0 16 16'
-                    >
-                      <path d='M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z' />
-                      <path d='M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v5H1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-1 9H2a1 1 0 0 1-1-1v-1h14v1a1 1 0 0 1-1 1z' />
-                    </svg>
-                  </div>
-                </div>
-                <input
-                  type='text'
-                  name='credit-expiry'
-                  className='w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                  placeholder='MM/YY'
-                />
-                <input
-                  type='text'
-                  name='credit-cvc'
-                  className='w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                  placeholder='CVC'
-                />
-              </div>
-              <label className='mt-4 mb-2 block text-sm font-medium'>
-                Billing Address
-              </label>
-              <div className='flex flex-col sm:flex-row'>
-                <div className='relative flex-shrink-0 sm:w-7/12'>
-                  <input
-                    type='text'
-                    id='billing-address'
-                    name='billing-address'
-                    className='w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                    placeholder='Street Address'
-                  />
-                  <div className='pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3'>
-                    <img
-                      className='h-4 w-4 object-contain'
-                      src='https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg'
-                      alt=''
-                    />
-                  </div>
-                </div>
-                <select
-                  name='billing-state'
-                  className='w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                >
-                  <option value='State'>State</option>
-                </select>
-                <input
-                  type='text'
-                  name='billing-zip'
-                  className='flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-blue-500 focus:ring-blue-500'
-                  placeholder='ZIP'
-                />
-              </div>
+          <div className='flex flex-col  lg:mx-0 col-span-3  lg:col-span-1 overflow-hidden sm:p-10 font-lato  mt-16 lg:mt-36 '>
+            <h2 className='text-2xl font-semibold font-josefinsans text-primary'>
+              Order items
+            </h2>
 
-              <div className='mt-6 border-t border-b py-2'>
-                <div className='flex items-center justify-between'>
-                  <p className='text-sm font-medium text-gray-900'>Subtotal</p>
-                  <p className='font-semibold text-gray-900'>$399.00</p>
-                </div>
-                <div className='flex items-center justify-between'>
-                  <p className='text-sm font-medium text-gray-900'>Shipping</p>
-                  <p className='font-semibold text-gray-900'>$8.00</p>
-                </div>
+            <div className='flex flex-col  pt-4 space-y-2 '>
+              <div className='flex justify-between'>
+                <span>Subtotal</span>
+                <span>$21.50</span>
               </div>
-              <div className='mt-6 flex items-center justify-between'>
-                <p className='text-sm font-medium text-gray-900'>Total</p>
-                <p className='text-2xl font-semibold text-gray-900'>$408.00</p>
+              <div className='flex items-center space-x-2 text-xs'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 512 512'
+                  className='w-3 h-3 mt-1 fill-current dark:text-violet-400'
+                >
+                  <path d='M485.887,263.261,248,25.373A31.791,31.791,0,0,0,225.373,16H64A48.055,48.055,0,0,0,16,64V225.078A32.115,32.115,0,0,0,26.091,248.4L279.152,486.125a23.815,23.815,0,0,0,16.41,6.51q.447,0,.9-.017a23.828,23.828,0,0,0,16.79-7.734L486.581,296.479A23.941,23.941,0,0,0,485.887,263.261ZM295.171,457.269,48,225.078V64A16.019,16.019,0,0,1,64,48H225.373L457.834,280.462Z'></path>
+                  <path d='M148,96a52,52,0,1,0,52,52A52.059,52.059,0,0,0,148,96Zm0,72a20,20,0,1,1,20-20A20.023,20.023,0,0,1,148,168Z'></path>
+                </svg>
+                <span className='dark:text-gray-400'>
+                  Spend $20.00, get 20% off
+                </span>
+              </div>
+              <div className='flex justify-between'>
+                <span>Discount</span>
+                <span>-$4.30</span>
               </div>
             </div>
-            <button className='mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white'>
-              Place Order
-            </button>
-          </div> */}
+            <div className='pt-4 space-y-2'>
+              <div className='flex justify-between'>
+                <span>Service fee</span>
+                <span>$0.50</span>
+              </div>
+              <div className='flex flex-col'>
+                <div className='flex justify-between'>
+                  <span>Delivery fee</span>
+                  <span>$4.00</span>
+                </div>
+                <a
+                  rel='noopener noreferrer'
+                  href='#'
+                  className='text-xs hover:underline dark:text-violet-400'
+                >
+                  How do our fees work?
+                </a>
+              </div>
+              <div className='space-y-6'>
+                <div className='flex justify-between'>
+                  <span>Total</span>
+                  <span className='font-semibold'>$22.70</span>
+                </div>
+                <button
+                  type='button'
+                  className='w-full py-2 bg-secondary text-white font-lato rounded-md max-w-[200px]'
+                >
+                  Go to checkout
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </section>

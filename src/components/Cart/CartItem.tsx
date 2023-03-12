@@ -23,23 +23,15 @@ const CartItem: React.FC = () => {
           <span className=' text-subtext'>42EU - 8.5US</span>
           <p className='text-md text-secondary'>$138.99</p>
         </div>
-        <div className='custom-number-input flex flex-col items-center justify-center max-w-[32px]  '>
+        <div className='custom-number-input flex flex-col items-center justify-center  '>
           <label className=' text-subtext  text-sm font-semibold'>Qty</label>
-          <div className='flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1'>
-            <button
-              data-action='decrement'
-              className=' bg-gray-300 text-subtext hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none'
-            ></button>
+          <div className='flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1 bg-red-200'>
             <input
               type='number'
-              className=' focus:outline-none text-center w-16 bg-gray-300 font-semibold text-subtext text-sm hover:text-black focus:text-black  md:text-basecursor-default  text-gray-700  outline-none border-subtext'
+              className=' focus:outline-none  w-full bg-gray-300 font-semibold text-subtext text-sm hover:text-black focus:text-black    outline-none border-subtext rounded-md'
               name='custom-input-number'
               value='0'
             ></input>
-            <button
-              data-action='increment'
-              className='bg-gray-300 text-subtext hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer'
-            ></button>
           </div>
         </div>
       </div>
