@@ -4,7 +4,7 @@ const Navbar: React.FC = () => {
   return (
     <header className='flex w-full items-center bg-white py-4 lg:py-0'>
       <div className='container mx-auto'>
-        <div className='relative  flex items-center justify-between'>
+        <div className='relative  flex items-center justify-center'>
           <div className='mx-16 w-auto lg:mx-0'>
             <a
               className='block   text-2xl md:text-3xl  font-josefinsans font-bold text-primary'
@@ -28,9 +28,9 @@ const Navbar: React.FC = () => {
                 id='navbarCollapse'
                 className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none ${
                   !showMenu && 'hidden'
-                }`}
+                } z-10`}
               >
-                <ul className='block lg:flex'>
+                <ul className='block lg:flex '>
                   <li>
                     <a
                       className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'

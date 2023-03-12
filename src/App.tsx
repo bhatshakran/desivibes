@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 import OrderComplete from './components/Order/OrderComplete';
 import Shop from './components/Shop';
+import ProductCard from './components/Shop/Product/ProductCard';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/ordercomplete' element={<OrderComplete />} />
           <Route path='/shop' element={<Shop />} />
+          <Route path='/shop/:slug' element={<ProductCard />} />
         </Routes>
       </Router>
       <Footer />

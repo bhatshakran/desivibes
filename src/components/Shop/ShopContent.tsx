@@ -200,7 +200,7 @@ const ShopContent: React.FC = () => {
 
         <main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='flex items-baseline justify-between border-b border-subtext pt-24 pb-6'>
-            <h1 className='text-[14px] sm:text-3xl lg:text-[46px] font-josefinsans text-primary'>
+            <h1 className='text-[16px] sm:text-3xl lg:text-[46px] font-josefinsans text-primary'>
               Ecommerce Accesories - DesiVibes
             </h1>
 
@@ -225,7 +225,7 @@ const ShopContent: React.FC = () => {
                   leaveFrom='transform opacity-100 scale-100'
                   leaveTo='transform opacity-0 scale-95'
                 >
-                  <Menu.Items className='absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                  <Menu.Items className='absolute right-0 z-2 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none'>
                     <div className='py-1'>
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>

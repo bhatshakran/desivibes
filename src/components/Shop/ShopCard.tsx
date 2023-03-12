@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import tshirt from '../../images/tshirt.png';
 
@@ -11,9 +12,12 @@ const ShopCard: React.FC = () => {
       />
       <div className=' bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
         <div className=''>
-          <div className='text-primary  font-josefinsans text-xl mb-2'>
+          <Link
+            to={`/shop/id`}
+            className='text-primary hover:underline  font-josefinsans text-xl mb-2'
+          >
             Hoodie epic
-          </div>
+          </Link>
 
           <p className='text-primary font-lato text-[14px] '>
             <span className='line-through'>$26</span>
