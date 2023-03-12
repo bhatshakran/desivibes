@@ -6,9 +6,9 @@ const ProductCard: React.FC = () => {
   return (
     <section>
       <Steps heading='Product Details' pageName='Product' />
-      <div className='flex flex-col w-full justify-center items-center py-[120px] gap-36'>
-        <article className='flex mx-auto max-w-3xl p-4 shadow-sm rounded-md shadow-lightblue border border-lightblue'>
-          <div className='w-1/2 flex gap-2'>
+      <div className='flex  flex-col w-full justify-center items-center py-[120px] gap-36 '>
+        <article className='flex flex-wrap   max-w-3xl p-4  rounded-md shadow-lightblue mx-4 sm:mx-8 md:mx-auto '>
+          <div className='w-full md:w-1/2 flex gap-2'>
             <div className='w-1/3  '>
               <div className='border border-lightblue p-1 mb-2'>
                 <img src={tshirt} alt='' />
@@ -21,7 +21,7 @@ const ProductCard: React.FC = () => {
               <img src={hoodie} alt='' />
             </div>
           </div>
-          <div className='w-1/2 px-5 py-8 flex flex-col gap-3'>
+          <div className='w-full md:w-1/2 px-5 py-8 flex flex-col gap-3'>
             <h2 className='font-josefinsans text-primary text-3xl'>
               Epic Hoodie
             </h2>
@@ -69,8 +69,8 @@ const ProductCard: React.FC = () => {
           </div>
         </article>
 
-        <article className='mx-auto bg-lightblue px-32 py-16'>
-          <div className='flex font-josefinsans text-primary text-2xl gap-16'>
+        <article className='w-full mx-auto bg-lightblue px-8 md:px-32 py-[120px] mb-[100px]'>
+          <div className='flex flex-wrap font-josefinsans text-primary text-lg md:text-2xl gap-4 md:gap-16'>
             <button className='underline'>Description</button>
             <button>Additional Info</button>
             <button>Reviews</button>
@@ -78,10 +78,10 @@ const ProductCard: React.FC = () => {
           </div>
 
           <div className='mt-16'>
-            <h2 className='text-primary font-josefinsans text-xl'>
+            <h2 className='text-primary font-josefinsans text-md md:text-xl'>
               Lorem, ipsum.
             </h2>
-            <p className='text-subtext font-lato text-base'>
+            <p className='text-subtext font-lato text-[12px] md:text-base'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
               recusandae soluta aliquid qui in voluptates alias odit dolores,
               labore, architecto molestias non ipsum pariatur! Rem iusto culpa
@@ -90,7 +90,7 @@ const ProductCard: React.FC = () => {
           </div>
 
           <div className='mt-16'>
-            <h2 className='text-primary font-josefinsans text-xl inline-flex'>
+            <h2 className='text-primary font-josefinsans text-md md:text-xl inline-flex'>
               <span className='mr-2'>More details</span>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -108,7 +108,7 @@ const ProductCard: React.FC = () => {
               </svg>
             </h2>
 
-            <p className='text-subtext font-lato text-base'>
+            <p className='text-subtext font-lato text-[12px] md:text-base'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
               ipsa.
             </p>
