@@ -8,6 +8,7 @@ import NotFound from './components/NotFound';
 import OrderComplete from './components/Order/OrderComplete';
 import Shop from './components/Shop';
 import ProductCard from './components/Shop/Product/ProductCard';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/ordercomplete' element={<OrderComplete />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/shop/:slug' element={<ProductCard />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </Router>
       <Footer />

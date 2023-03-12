@@ -78,10 +78,10 @@ const ProductCard: React.FC = () => {
           </div>
 
           <div className='mt-16'>
-            <h2 className='text-primary font-josefinsans text-md md:text-xl'>
+            <h2 className='text-primary font-josefinsans text-lg md:text-xl'>
               Lorem, ipsum.
             </h2>
-            <p className='text-subtext font-lato text-[12px] md:text-base'>
+            <p className='text-subtext font-lato text-[14px] md:text-base'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
               recusandae soluta aliquid qui in voluptates alias odit dolores,
               labore, architecto molestias non ipsum pariatur! Rem iusto culpa
@@ -90,7 +90,7 @@ const ProductCard: React.FC = () => {
           </div>
 
           <div className='mt-16'>
-            <h2 className='text-primary font-josefinsans text-md md:text-xl inline-flex'>
+            <h2 className='text-primary font-josefinsans text-lg md:text-xl inline-flex'>
               <span className='mr-2'>More details</span>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -108,7 +108,7 @@ const ProductCard: React.FC = () => {
               </svg>
             </h2>
 
-            <p className='text-subtext font-lato text-[12px] md:text-base'>
+            <p className='text-subtext font-lato text-[14px] md:text-base'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
               ipsa.
             </p>
