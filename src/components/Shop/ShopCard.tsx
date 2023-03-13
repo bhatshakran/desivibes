@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ShopCard: React.FC<any> = ({ details }) => {
-  console.log(details);
   return (
     <div className='max-w-[150px] mx-auto sm:w-auto    '>
       <img

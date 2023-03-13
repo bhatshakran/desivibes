@@ -19,9 +19,9 @@ const sortOptions = [
   { name: 'Price: High to Low', href: '#', current: false },
 ];
 const subCategories = [
-  { name: 'Hoodies' },
-  { name: 'Tshirts' },
-  { name: 'Shirts' },
+  { name: 'Hoodie' },
+  { name: 'Tshirt' },
+  { name: 'Shirt' },
 ];
 const filters = [
   {
@@ -67,10 +67,51 @@ const ShopContent: React.FC = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [products, setProducts] = useState([]);
 
+  const [activeFilters, setActiveFilters] = useState<Array<any>>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Array<any>>();
+
+  const applyFilters = () => {
+    let filtered: any = [];
+    console.log(activeFilters);
+    activeFilters.map((filter: string) => {
+      console.log(filter);
+      products.map((product: any) => {
+        console.log(product.type);
+
+        // console.log(product.type === filter);
+        if (product.type.toLowerCase() === filter.toLowerCase()) {
+          filtered.push(product);
+        }
+      });
+    });
+
+    setFilteredProducts(filtered);
+
+    console.log(filteredProducts);
+  };
+
+  const addFilter = (cat: string) => {
+    let updatedState = [...activeFilters];
+    // check if filter already exists in there then remove it
+
+    if (updatedState.length > 0) {
+      const itemExists = updatedState.includes(cat);
+      // if the item exists remove it from the filters
+      if (itemExists) {
+        updatedState = updatedState.filter((el: any) => el !== cat);
+      } else {
+        updatedState.push(cat);
+      }
+    } else {
+      updatedState.push(cat);
+    }
+
+    setActiveFilters(updatedState);
+  };
+
   useEffect(() => {
     (async function () {
       const docs = await getDocuments('hoodies');
-      console.log(docs);
 
       setProducts(docs);
     })();
@@ -288,86 +329,110 @@ const ShopContent: React.FC = () => {
 
             <div className='grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4'>
               {/* Filters */}
-              <form className='hidden lg:block  col-span-1'>
-                <h3 className='sr-only'>Categories</h3>
-                <ul
-                  role='list'
-                  className='space-y-4 border-b border-subtext pb-6 text-sm font-medium text-gray-900'
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href='/' className='text-subtext '>
-                        {category.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-
-                {filters.map((section) => (
-                  <Disclosure
-                    as='div'
-                    key={section.id}
-                    className='border-b border-subtext py-6'
+              <div className='hidden lg:block  col-span-1'>
+                <form className=''>
+                  <h3 className='sr-only'>Categories</h3>
+                  <ul
+                    role='list'
+                    className='space-y-4 border-b border-subtext pb-6 text-sm font-medium text-gray-900'
                   >
-                    {({ open }) => (
-                      <>
-                        <h3 className='-my-3 flow-root'>
-                          <Disclosure.Button className='flex w-full items-center justify-between  py-3 text-sm text-gray-400 hover:text-gray-500'>
-                            <span className='font-medium text-primary'>
-                              {section.name}
-                            </span>
-                            <span className='ml-6 flex items-center'>
-                              {open ? (
-                                <MinusIcon
-                                  className='h-5 w-5 text-subtext'
-                                  aria-hidden='true'
-                                />
-                              ) : (
-                                <PlusIcon
-                                  className='h-5 w-5 text-subtext'
-                                  aria-hidden='true'
-                                />
-                              )}
-                            </span>
-                          </Disclosure.Button>
-                        </h3>
-                        <Disclosure.Panel className='pt-6'>
-                          <div className='space-y-4'>
-                            {section.options.map((option, optionIdx) => (
-                              <div
-                                key={option.value}
-                                className='flex items-center'
-                              >
-                                <input
-                                  id={`filter-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
-                                  defaultValue={option.value}
-                                  type='checkbox'
-                                  defaultChecked={option.checked}
-                                  className='h-4 w-4 rounded text-checkbox focus:outline-none'
-                                />
-                                <label
-                                  htmlFor={`filter-${section.id}-${optionIdx}`}
-                                  className='ml-3 text-sm text-subtext '
+                    {subCategories.map((category) => (
+                      <li key={category.name}>
+                        <span role={'button'} className='text-subtext '>
+                          <input
+                            id={`filter-${category.name}`}
+                            name={`${category.name}`}
+                            type='checkbox'
+                            className='h-4 w-4 rounded text-checkbox focus:outline-none'
+                            onClick={() => addFilter(category.name)}
+                          />
+                          <label
+                            htmlFor={`filter-${category.name}`}
+                            className='ml-3 text-sm text-subtext '
+                          >
+                            {category.name}
+                          </label>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {filters.map((section) => (
+                    <Disclosure
+                      as='div'
+                      key={section.id}
+                      className='border-b border-subtext py-6'
+                    >
+                      {({ open }) => (
+                        <>
+                          <h3 className='-my-3 flow-root'>
+                            <Disclosure.Button className='flex w-full items-center justify-between  py-3 text-sm text-gray-400 hover:text-gray-500'>
+                              <span className='font-medium text-primary'>
+                                {section.name}
+                              </span>
+                              <span className='ml-6 flex items-center'>
+                                {open ? (
+                                  <MinusIcon
+                                    className='h-5 w-5 text-subtext'
+                                    aria-hidden='true'
+                                  />
+                                ) : (
+                                  <PlusIcon
+                                    className='h-5 w-5 text-subtext'
+                                    aria-hidden='true'
+                                  />
+                                )}
+                              </span>
+                            </Disclosure.Button>
+                          </h3>
+                          <Disclosure.Panel className='pt-6'>
+                            <div className='space-y-4'>
+                              {section.options.map((option, optionIdx) => (
+                                <div
+                                  key={option.value}
+                                  className='flex items-center'
                                 >
-                                  {option.label}
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                ))}
-              </form>
+                                  <input
+                                    id={`filter-${section.id}-${optionIdx}`}
+                                    name={`${section.id}[]`}
+                                    defaultValue={option.value}
+                                    type='checkbox'
+                                    defaultChecked={option.checked}
+                                    className='h-4 w-4 rounded text-checkbox focus:outline-none'
+                                  />
+                                  <label
+                                    htmlFor={`filter-${section.id}-${optionIdx}`}
+                                    className='ml-3 text-sm text-subtext '
+                                  >
+                                    {option.label}
+                                  </label>
+                                </div>
+                              ))}
+                            </div>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  ))}
+                </form>
+                <button
+                  className='bg-secondary text-white px-4 py-2 rounded-md mt-6'
+                  onClick={applyFilters}
+                >
+                  Apply Filters
+                </button>
+              </div>
 
               {/* Product grid */}
               <div className='grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:col-span-3  w-full gap-x-4  gap-y-12 '>
-                {products &&
-                  products.map((el: any, id: number) => {
-                    return <ShopCard key={id} details={el} />;
-                  })}
+                {filteredProducts
+                  ? filteredProducts.map((el: any, id: number) => {
+                      return <ShopCard key={id} details={el} />;
+                    })
+                  : products &&
+                    products.map((el: any, id: number) => {
+                      return <ShopCard key={id} details={el} />;
+                    })}
               </div>
             </div>
           </section>
