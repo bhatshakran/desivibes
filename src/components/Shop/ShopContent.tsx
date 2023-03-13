@@ -33,7 +33,7 @@ const filters = [
       { value: 'blue', label: 'Blue', checked: true },
       { value: 'brown', label: 'Brown', checked: false },
       { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
+      { value: 'black', label: 'Black', checked: false },
     ],
   },
   {
@@ -67,31 +67,70 @@ const ShopContent: React.FC = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [products, setProducts] = useState([]);
 
-  const [activeFilters, setActiveFilters] = useState<Array<any>>([]);
+  const [typeFilters, setTypeFilters] = useState<Array<any>>([]);
+  const [colorFilters, setColorFilters] = useState<Array<any>>([]);
+  const [categoryFilters, setCategoryFilters] = useState<Array<any>>([]);
   const [filteredProducts, setFilteredProducts] = useState<Array<any>>();
 
   const applyFilters = () => {
+    if (mobileFiltersOpen) {
+      setMobileFiltersOpen(false);
+    }
     let filtered: any = [];
-    console.log(activeFilters);
-    activeFilters.map((filter: string) => {
-      console.log(filter);
-      products.map((product: any) => {
-        console.log(product.type);
 
-        // console.log(product.type === filter);
-        if (product.type.toLowerCase() === filter.toLowerCase()) {
-          filtered.push(product);
-        }
+    //  check for types
+    if (typeFilters.length > 0) {
+      typeFilters.map((filter: string) => {
+        console.log(filter);
+        products.map((product: any) => {
+          // check for category filters
+          if (product.type.toLowerCase() === filter.toLowerCase()) {
+            filtered.push(product);
+          }
+        });
       });
-    });
+    }
+    // check for colors
+    if (colorFilters.length > 0) {
+      if (filtered.length > 0) {
+        filtered = filtered.filter((product: any) => {
+          return product.colors.some((el: string) => colorFilters.includes(el));
+        });
+      } else {
+        filtered = products.filter((product: any) => {
+          return product.colors.some((el: string) => colorFilters.includes(el));
+        });
+      }
+    }
 
+    // check for category
+    if (categoryFilters.length > 0) {
+      if (filtered.length > 0) {
+        filtered = filtered.filter((product: any) => {
+          return product.tag.some((el: string) => categoryFilters.includes(el));
+        });
+      } else {
+        filtered = products.filter((product: any) => {
+          return product.tag.some((el: string) => categoryFilters.includes(el));
+        });
+      }
+    }
+
+    // if(filtered)
+
+    // check for
     setFilteredProducts(filtered);
-
-    console.log(filteredProducts);
   };
 
-  const addFilter = (cat: string) => {
-    let updatedState = [...activeFilters];
+  const addFilter = (cat: string, type: string) => {
+    let updatedState: any = [];
+    if (type === 'type') {
+      updatedState = [...typeFilters];
+    } else if (type === 'Color') {
+      updatedState = [...colorFilters];
+    } else if (type === 'Category') {
+      updatedState = [...categoryFilters];
+    }
     // check if filter already exists in there then remove it
 
     if (updatedState.length > 0) {
@@ -105,10 +144,14 @@ const ShopContent: React.FC = () => {
     } else {
       updatedState.push(cat);
     }
-
-    setActiveFilters(updatedState);
+    if (type === 'type') {
+      setTypeFilters(updatedState);
+    } else if (type === 'Color') {
+      setColorFilters(updatedState);
+    } else if (type === 'Category') {
+      setCategoryFilters(updatedState);
+    }
   };
-
   useEffect(() => {
     (async function () {
       const docs = await getDocuments('hoodies');
@@ -172,12 +215,22 @@ const ShopContent: React.FC = () => {
                     >
                       {subCategories.map((category) => (
                         <li key={category.name}>
-                          <a
-                            href='/'
-                            className='block px-2 py-3 text-subtext hover:text-primary'
-                          >
-                            {category.name}
-                          </a>
+                          <span role={'button'} className='text-subtext '>
+                            <input
+                              id={`filter-${category.name}`}
+                              name={`${category.name}`}
+                              type='checkbox'
+                              checked={typeFilters.includes(category.name)}
+                              className='h-4 w-4 rounded text-checkbox focus:outline-none'
+                              onClick={() => addFilter(category.name, 'type')}
+                            />
+                            <label
+                              htmlFor={`filter-${category.name}`}
+                              className='ml-3 text-sm text-subtext '
+                            >
+                              {category.name}
+                            </label>
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -240,6 +293,12 @@ const ShopContent: React.FC = () => {
                       </Disclosure>
                     ))}
                   </form>
+                  <button
+                    className='bg-secondary text-white px-4 py-2 rounded-md mt-6 mx-8'
+                    onClick={applyFilters}
+                  >
+                    Apply Filters
+                  </button>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -248,8 +307,8 @@ const ShopContent: React.FC = () => {
 
         <main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='flex items-baseline justify-between border-b border-subtext pt-24 pb-6'>
-            <h1 className='text-[16px] sm:text-3xl lg:text-[46px] font-josefinsans text-primary'>
-              Ecommerce Accesories - DesiVibes
+            <h1 className='text-[20px] sm:text-3xl lg:text-[46px] font-josefinsans text-primary'>
+              DesiVibes collection
             </h1>
 
             <div className='flex items-center'>
@@ -344,7 +403,7 @@ const ShopContent: React.FC = () => {
                             name={`${category.name}`}
                             type='checkbox'
                             className='h-4 w-4 rounded text-checkbox focus:outline-none'
-                            onClick={() => addFilter(category.name)}
+                            onClick={() => addFilter(category.name, 'type')}
                           />
                           <label
                             htmlFor={`filter-${category.name}`}
@@ -395,9 +454,10 @@ const ShopContent: React.FC = () => {
                                   <input
                                     id={`filter-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
-                                    defaultValue={option.value}
                                     type='checkbox'
-                                    defaultChecked={option.checked}
+                                    onClick={() =>
+                                      addFilter(option.value, section.name)
+                                    }
                                     className='h-4 w-4 rounded text-checkbox focus:outline-none'
                                   />
                                   <label
@@ -424,8 +484,8 @@ const ShopContent: React.FC = () => {
               </div>
 
               {/* Product grid */}
-              <div className='grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:col-span-3  w-full gap-x-4  gap-y-12 '>
-                {filteredProducts
+              <div className='grid justify-items-center  grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:col-span-3  w-full gap-x-4  gap-y-12 '>
+                {filteredProducts && filteredProducts.length > 0
                   ? filteredProducts.map((el: any, id: number) => {
                       return <ShopCard key={id} details={el} />;
                     })

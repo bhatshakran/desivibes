@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ShopCard: React.FC<any> = ({ details }) => {
   return (
-    <div className='max-w-[150px] mx-auto sm:w-auto    '>
+    <div className='max-w-[150px]   sm:mx-auto  '>
       <img
         className='h-40 lg:w-full w-full flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden '
         src={details.images[0]}
