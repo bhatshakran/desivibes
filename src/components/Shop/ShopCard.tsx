@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const ShopCard: React.FC<any> = ({ details }) => {
   console.log(details);
   return (
-    <div className='max-w-[250px] mx-auto sm:w-auto    '>
+    <div className='max-w-[150px] mx-auto sm:w-auto    '>
       <img
-        className='h-48 lg:w-full w-full flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden '
+        className='h-40 lg:w-full w-full flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden '
         src={details.images[0]}
       />
       <div className=' bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
@@ -28,7 +28,7 @@ const ShopCard: React.FC<any> = ({ details }) => {
             Colors: {details.colors}
           </p>
         </div>
-        <div className='flex items-center gap-8 mt-4'>
+        <div className='flex items-center gap-4 mt-4'>
           <p className='text-primary leading-none bg-white rounded-full shadow-sm p-2 hover:bg-secondary hover:text-white cursor-pointer'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -36,7 +36,7 @@ const ShopCard: React.FC<any> = ({ details }) => {
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='w-5 h-5'
+              className='w-4 h-4'
             >
               <path
                 strokeLinecap='round'
@@ -52,7 +52,7 @@ const ShopCard: React.FC<any> = ({ details }) => {
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='w-5 h-5'
+              className='w-4 h-4'
             >
               <path
                 strokeLinecap='round'
@@ -68,7 +68,7 @@ const ShopCard: React.FC<any> = ({ details }) => {
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='w-5 h-5'
+              className='w-4 h-4'
             >
               <path
                 strokeLinecap='round'

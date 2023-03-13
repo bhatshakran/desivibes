@@ -10,7 +10,6 @@ import {
 } from '@heroicons/react/20/solid';
 import ShopCard from './ShopCard';
 import { getDocuments } from '../../Firebase/Functions';
-import isEmpty from 'lodash.isempty';
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -20,11 +19,9 @@ const sortOptions = [
   { name: 'Price: High to Low', href: '#', current: false },
 ];
 const subCategories = [
-  { name: 'Totes', href: '#' },
-  { name: 'Backpacks', href: '#' },
-  { name: 'Travel Bags', href: '#' },
-  { name: 'Hip Bags', href: '#' },
-  { name: 'Laptop Sleeves', href: '#' },
+  { name: 'Hoodies' },
+  { name: 'Tshirts' },
+  { name: 'Shirts' },
 ];
 const filters = [
   {
@@ -43,23 +40,21 @@ const filters = [
     id: 'category',
     name: 'Category',
     options: [
-      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-      { value: 'sale', label: 'Sale', checked: false },
-      { value: 'travel', label: 'Travel', checked: true },
-      { value: 'organization', label: 'Organization', checked: false },
-      { value: 'accessories', label: 'Accessories', checked: false },
+      { value: 'featured', label: 'Featured', checked: false },
+      { value: 'latest', label: 'Latest', checked: false },
+      { value: 'sale', label: 'Sale', checked: true },
     ],
   },
   {
     id: 'size',
     name: 'Size',
     options: [
-      { value: '2l', label: '2L', checked: false },
-      { value: '6l', label: '6L', checked: false },
-      { value: '12l', label: '12L', checked: false },
-      { value: '18l', label: '18L', checked: false },
-      { value: '20l', label: '20L', checked: false },
-      { value: '40l', label: '40L', checked: true },
+      { value: 'sm', label: 'sm', checked: false },
+      { value: 'md', label: 'md', checked: false },
+      { value: 'lg', label: 'lg', checked: false },
+      { value: 'xl', label: 'xl', checked: false },
+      { value: '2xl', label: '2xl', checked: false },
+      { value: '3xl', label: '3xl', checked: true },
     ],
   },
 ];
@@ -137,7 +132,7 @@ const ShopContent: React.FC = () => {
                       {subCategories.map((category) => (
                         <li key={category.name}>
                           <a
-                            href={category.href}
+                            href='/'
                             className='block px-2 py-3 text-subtext hover:text-primary'
                           >
                             {category.name}
@@ -293,7 +288,7 @@ const ShopContent: React.FC = () => {
 
             <div className='grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4'>
               {/* Filters */}
-              <form className='hidden lg:block '>
+              <form className='hidden lg:block  col-span-1'>
                 <h3 className='sr-only'>Categories</h3>
                 <ul
                   role='list'
@@ -301,7 +296,7 @@ const ShopContent: React.FC = () => {
                 >
                   {subCategories.map((category) => (
                     <li key={category.name}>
-                      <a href={category.href} className='text-subtext '>
+                      <a href='/' className='text-subtext '>
                         {category.name}
                       </a>
                     </li>
@@ -368,7 +363,7 @@ const ShopContent: React.FC = () => {
               </form>
 
               {/* Product grid */}
-              <div className='grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:col-span-3  w-full gap-x-4  gap-y-12 '>
+              <div className='grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:col-span-3  w-full gap-x-4  gap-y-12 '>
                 {products &&
                   products.map((el: any, id: number) => {
                     return <ShopCard key={id} details={el} />;
