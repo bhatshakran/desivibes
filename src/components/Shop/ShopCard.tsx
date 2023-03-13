@@ -11,7 +11,7 @@ const ShopCard: React.FC<any> = ({ details }) => {
       <div className=' bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
         <div className=''>
           <Link
-            to={`/shop/id`}
+            to={`/shop/${details.id}`}
             className='text-primary hover:underline  font-josefinsans text-xl mb-2'
           >
             {details.name}
