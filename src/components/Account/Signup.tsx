@@ -1,20 +1,20 @@
 import React from 'react';
 import Steps from '../Steps';
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   return (
     <section className='bg-white  '>
-      <Steps heading='Login' pageName='Login' />
+      <Steps heading='Signup' pageName='Signup' />
       <div className='container mx-auto px-8 mt-8 mb-16'>
         <div className=' flex flex-wrap shadow-lg rounded-xl max-w-xl mx-auto'>
           <div className='w-full px-4'>
             <div className='relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]'>
               <div className='mb-10 text-center md:mb-16'>
                 <p className='mx-auto inline-block max-w-[160px] text-[42px] font-josefinsans'>
-                  Login
+                  Signup
                 </p>
                 <p className='font-lato text-[17px] text-subtext'>
-                  Login with your account detail below
+                  Create an account with your details below.
                 </p>
               </div>
               <form>
@@ -41,19 +41,13 @@ const Login: React.FC = () => {
                 </div>
               </form>
 
-              <a
-                href='/forgot'
-                className='mb-2 inline-block text-base text-subtext hover:text-primary hover:underline'
-              >
-                Forget Password?
-              </a>
               <p className='text-base text-[#adadad]'>
-                Dont have an account yet?
+                Already have an account ?
                 <a
-                  href='/signup'
+                  href='/login'
                   className='text-subtext hover:text-primary hover:underline ml-2'
                 >
-                  Create account
+                  Login
                 </a>
               </p>
             </div>
@@ -64,4 +58,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Signup;

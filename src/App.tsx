@@ -15,6 +15,7 @@ import Shop from './components/Shop';
 import ProductCard from './components/Shop/Product/ProductCard';
 import Cart from './components/Cart';
 import Admin from './components/Admin';
+import Signup from './components/Account/Signup';
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
           <Route path='/' element={<LayoutsWithNavbar />}>
             <Route path='*' element={<NotFound />} />
             <Route path='/' element={<Home />} />
-            <Route path='/account' element={<Login />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+
             <Route path='/contact' element={<Contact />} />
             <Route path='/ordercomplete' element={<OrderComplete />} />
             <Route path='/shop' element={<Shop />} />
