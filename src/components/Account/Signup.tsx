@@ -12,7 +12,6 @@ const Signup: React.FC = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
     signup(data.email, data.password);
   };
 

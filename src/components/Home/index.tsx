@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Banner from '../Banner';
 import FeaturedProducts from '../FeaturedProducts';
 import LatestProducts from '../LatestProducts';
@@ -9,7 +10,7 @@ const Home: React.FC = () => {
     <>
       <Banner />
       <FeaturedProducts />
-      <LatestProducts />
+      {/* <LatestProducts /> */}
       <Services />
     </>
   );
