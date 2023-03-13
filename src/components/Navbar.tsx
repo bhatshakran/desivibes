@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
                     <li>
                       <a
                         className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
-                        href='/account'
+                        href='/signup'
                       >
                         Account
                       </a>

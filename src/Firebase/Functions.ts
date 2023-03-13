@@ -58,8 +58,24 @@ export async function getDocuments(type: string, tag: string) {
 
   const returnArr: any = [];
   querySnapshot.forEach((doc: any) => {
-    returnArr.push(doc.data());
+    const id = doc._key.path.segments[doc._key.path.segments.length - 1];
+    const newData = { ...doc.data(), id };
+    returnArr.push(newData);
   });
 
   return returnArr;
+}
+
+export async function getDocument(collection: string, id: string) {
+  const docRef = doc(db, collection, id);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    throw new Error('No such document');
+  }
+
+  // return returnArr;
 }
