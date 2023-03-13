@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CartItem: React.FC<any> = ({ details }) => {
-  console.log(details);
   return (
     <div className='flex flex-col w-full max-w-[150px] lg:max-w-[300px] py-4 lg:py-0 lg:flex-row mx-auto lg:mx-0'>
       <div

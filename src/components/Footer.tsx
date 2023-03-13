@@ -243,8 +243,8 @@ const Footer: React.FC = () => {
                 y2='1.22829e-05'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#3056D3' stopOpacity='0.08' />
-                <stop offset='1' stop-color='#C4C4C4' stopOpacity='0' />
+                <stop stopColor='#3056D3' stopOpacity='0.08' />
+                <stop offset='1' stopColor='#C4C4C4' stopOpacity='0' />
               </linearGradient>
             </defs>
           </svg>
@@ -270,7 +270,7 @@ const Footer: React.FC = () => {
                 y2='37.5'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#13C296' stopOpacity='0.31' />
+                <stop stopColor='#13C296' stopOpacity='0.31' />
                 <stop offset='1' stopColor='#C4C4C4' stopOpacity='0' />
               </linearGradient>
             </defs>

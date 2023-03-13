@@ -10,7 +10,6 @@ const LatestProducts: React.FC = () => {
   useEffect(() => {
     (async function () {
       const documents = await getDocuments('hoodies', 'latest');
-      console.log(documents);
       if (!isEmpty(documents)) {
         setData(documents);
       }

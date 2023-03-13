@@ -1,5 +1,6 @@
 import isEmpty from 'lodash.isempty';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Steps from '../Steps';
 import CartItem from './CartItem';
 
@@ -26,14 +27,12 @@ const Cart: React.FC = () => {
     setSubtotal(totalPrice);
   }, [subtotal]);
 
-  console.log(cart);
-
   if (!isEmpty(cart)) {
     return (
       <section>
         <Steps heading='Shopping Cart' pageName='Cart' />
         <section className='py-16 lg:py-[120px] relative w-full '>
-          <div className='mt-8 w-full flex justify-center lg:justify-start absolute top-0 -right-36'>
+          <div className='mt-8  flex justify-center lg:justify-start absolute top-0 right-8'>
             <button className='bg-secondary py-2 px-4 rounded-md text-white font-lato '>
               Clear Cart
             </button>
@@ -105,15 +104,17 @@ const Cart: React.FC = () => {
                   <div className='flex justify-between'>
                     <span>Total</span>
                     <span className='font-semibold'>
-                      {subtotal! + 4.3 + 0.5 + 4}
+                      ${subtotal! + 4.3 + 0.5 + 4}
                     </span>
                   </div>
-                  <button
+                  <Link
+                    to='/checkout'
                     type='button'
-                    className='w-full py-2 bg-secondary text-white font-lato rounded-md max-w-[200px]'
+                    state={subtotal! + 4.3 + 0.5 + 4}
+                    className='w-full py-2 text-center bg-secondary text-white font-lato rounded-md max-w-[200px]'
                   >
                     Go to checkout
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

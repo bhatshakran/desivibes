@@ -16,6 +16,7 @@ import ProductCard from './components/Shop/Product/ProductCard';
 import Cart from './components/Cart';
 import Admin from './components/Admin';
 import Signup from './components/Account/Signup';
+import Checkout from './components/Checkout';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path='/shop' element={<Shop />} />
             <Route path='/shop/:slug' element={<ProductCard />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<Checkout />} />
           </Route>
           <Route path='/admin' element={<Admin />} />
         </Routes>

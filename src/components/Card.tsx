@@ -6,7 +6,6 @@ interface CardProps {
   cardtype?: string;
 }
 const Card: React.FC<CardProps> = ({ details }) => {
-  console.log(details);
   return (
     <div className='min-w-[150px] w-[270px] h-[370px] overflow-hidden bg-white rounded-lg shadow-md'>
       <div className=' overflow-hidden rounded-lg w-full p-3'>
