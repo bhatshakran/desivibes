@@ -3,6 +3,7 @@ import Steps from '../../Steps';
 import { getDocument } from '../../../Firebase/Functions';
 import isEmpty from 'lodash.isempty';
 import { DocumentData } from 'firebase/firestore';
+import { addToCart } from '../../../helpers/AddtoCart';
 
 const ProductCard: React.FC = () => {
   window.scroll(0, 0);
@@ -64,7 +65,10 @@ const ProductCard: React.FC = () => {
               </div>
 
               <div>
-                <button className='text-primary font-lato flex gap-2  py-3 px-4 rounded-md hover:bg-secondary hover:text-white border border-lightblue'>
+                <button
+                  className='text-primary font-lato flex gap-2  py-3 px-4 rounded-md hover:bg-secondary hover:text-white border border-lightblue'
+                  onClick={() => addToCart(productInfo)}
+                >
                   <span>Add to Cart</span>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'

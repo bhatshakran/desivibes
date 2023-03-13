@@ -8,7 +8,6 @@ const FeaturedProducts: React.FC = () => {
   useEffect(() => {
     (async function () {
       const documents = await getDocuments('hoodies', 'featured');
-      console.log(documents);
       if (!isEmpty(documents)) {
         setData(documents);
       }
