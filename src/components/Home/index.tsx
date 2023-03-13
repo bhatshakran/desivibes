@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <>
       <Banner />
       <FeaturedProducts />
-      {/* <LatestProducts /> */}
+      <LatestProducts />
       <Services />
     </>
   );
