@@ -32,29 +32,30 @@ const Cart: React.FC = () => {
     return (
       <section>
         <Steps heading='Shopping Cart' pageName='Cart' />
-        <section className='py-16 lg:py-[120px]'>
-          <div className='grid sm:px-10 lg:grid-cols-3 lg:px-20 xl:px-32'>
-            <div className='px-4 pt-8 w-full col-span-3 lg:col-span-2'>
+        <section className='py-16 lg:py-[120px] relative w-full '>
+          <div className='mt-8 w-full flex justify-center lg:justify-start absolute top-0 -right-36'>
+            <button className='bg-secondary py-2 px-4 rounded-md text-white font-lato '>
+              Clear Cart
+            </button>
+          </div>
+          <div className='grid sm:px-10 justify-center lg:grid-cols-2 lg:px-20 xl:px-32'>
+            <div className='px-4 pt-8 w-full col-span-2 lg:col-span-1 '>
               <p className='text-3xl lg:text-[46px] font-josefinsans text-primary text-center lg:text-start'>
                 Order Summary
               </p>
+
               <p className='text-subtext font-lato text-lg lg:text-2xl text-center lg:text-start'>
                 Check your items. And proceed to checkout
               </p>
+
               <div className='grid grid-cols-1   lg:grid-cols-1 md:gap-4  mt-8 space-y-3  bg-white px-2 py-16 sm:px-6 '>
                 {cart &&
                   cart.map((item: any, id: number) => {
                     return <CartItem key={id} details={item} />;
                   })}
               </div>
-
-              <div className='lg:ml-16 mt-8 w-full flex justify-center lg:justify-start'>
-                <button className='bg-secondary py-2 px-4 rounded-md text-white font-lato '>
-                  Clear Cart
-                </button>
-              </div>
             </div>
-            <div className='flex flex-col   lg:mx-0 col-span-3  lg:col-span-1 overflow-hidden sm:p-10 font-lato  mt-16 lg:mt-36 '>
+            <div className='flex flex-col w-[400px] lg:w-auto col-span-1  lg:col-span-1 sm:p-10 font-lato  mt-16 lg:mt-36 px-8 lg:px-0'>
               <h2 className='text-2xl font-semibold font-josefinsans text-primary'>
                 Order items
               </h2>
