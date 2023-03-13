@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { signin } from '../../Firebase/Functions';
 import Steps from '../Steps';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Inputs } from './types';
 
 const Login: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const [backEndErr, setBackEndErr] = useState('');
+
+  const LoginHandler: SubmitHandler<Inputs> = async (data) => {
+    console.log(data);
+    setBackEndErr('');
+
+    try {
+      const user = await signin(data.email, data.password);
+      console.log(user);
+    } catch (error: any) {
+      setBackEndErr(String(error));
+    }
+  };
+
   return (
     <section className='bg-white  '>
       <Steps heading='Login' pageName='Login' />
@@ -17,20 +40,60 @@ const Login: React.FC = () => {
                   Login with your account detail below
                 </p>
               </div>
-              <form>
-                <div className='mb-6'>
+              <form onSubmit={handleSubmit(LoginHandler)}>
+                <div className='mb-6 flex flex-col'>
                   <input
                     type='text'
+                    {...register('email', {
+                      required: true,
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address',
+                      },
+                    })}
+                    aria-invalid={errors.email ? 'true' : 'false'}
+                    id='email-login'
                     placeholder='Email'
                     className='border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-subtext focus-visible:shadow-none'
                   />
+                  {errors.email?.message && (
+                    <span
+                      role={'alert'}
+                      className='text-red-400 text-[12px] w-full text-left font-bold'
+                    >
+                      {errors.email?.message}
+                    </span>
+                  )}
                 </div>
-                <div className='mb-6'>
+                <div className='mb-6 flex flex-col'>
                   <input
                     type='password'
+                    {...register('password', {
+                      required: true,
+                      maxLength: 20,
+                      minLength: 6,
+                    })}
+                    aria-invalid={errors.password ? 'true' : 'false'}
+                    id='password-login'
                     placeholder='Password'
                     className='border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-subtext focus-visible:shadow-none'
                   />
+                  {errors.password && (
+                    <span
+                      role={'alert'}
+                      className='text-red-400 text-[12px] w-full text-left font-bold'
+                    >
+                      Please check you password and try again.
+                    </span>
+                  )}
+                  {backEndErr?.length > 0 && (
+                    <span
+                      role={'alert'}
+                      className='text-red-400 text-[12px] w-full text-left font-bold'
+                    >
+                      {backEndErr}
+                    </span>
+                  )}
                 </div>
                 <div className='mb-10'>
                   <input

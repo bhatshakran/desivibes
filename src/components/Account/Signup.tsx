@@ -1,7 +1,21 @@
 import React from 'react';
+import { signup } from '../../Firebase/Functions';
 import Steps from '../Steps';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Inputs } from './types';
 
 const Signup: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    signup(data.email, data.password);
+  };
+
   return (
     <section className='bg-white  '>
       <Steps heading='Signup' pageName='Signup' />
@@ -17,25 +31,55 @@ const Signup: React.FC = () => {
                   Create an account with your details below.
                 </p>
               </div>
-              <form>
-                <div className='mb-6'>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className='mb-6 flex flex-col'>
                   <input
                     type='text'
+                    {...register('email', {
+                      required: true,
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address',
+                      },
+                    })}
+                    aria-invalid={errors.email ? 'true' : 'false'}
                     placeholder='Email'
                     className='border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-subtext focus-visible:shadow-none'
                   />
+                  {errors.email?.message && (
+                    <span
+                      role={'alert'}
+                      className='text-red-400 text-[12px] w-full text-left font-bold'
+                    >
+                      {errors.email?.message}
+                    </span>
+                  )}
                 </div>
-                <div className='mb-6'>
+                <div className='mb-6 flex flex-col'>
                   <input
                     type='password'
+                    {...register('password', {
+                      required: true,
+                      maxLength: 20,
+                      minLength: 6,
+                    })}
+                    aria-invalid={errors.password ? 'true' : 'false'}
                     placeholder='Password'
                     className='border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-subtext focus-visible:shadow-none'
                   />
+                  {errors.password && (
+                    <span
+                      role={'alert'}
+                      className='text-red-400 text-[12px] w-full text-left font-bold'
+                    >
+                      Please check you password and try again.
+                    </span>
+                  )}
                 </div>
                 <div className='mb-10'>
                   <input
                     type='submit'
-                    value='Sign In'
+                    value='Sign Up'
                     className=' w-full cursor-pointer rounded-md  bg-secondary py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-lato'
                   />
                 </div>
