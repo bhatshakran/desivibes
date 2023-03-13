@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import tshirt from '../../images/tshirt.png';
-
-const ShopCard: React.FC = () => {
+const ShopCard: React.FC<any> = ({ details }) => {
+  console.log(details);
   return (
     <div className='max-w-[250px] mx-auto sm:w-auto    '>
       <img
         className='h-48 lg:w-full w-full flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden '
-        src={tshirt}
+        src={details.images[0]}
       />
       <div className=' bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
         <div className=''>
@@ -16,16 +15,17 @@ const ShopCard: React.FC = () => {
             to={`/shop/id`}
             className='text-primary hover:underline  font-josefinsans text-xl mb-2'
           >
-            Hoodie epic
+            {details.name}
           </Link>
 
           <p className='text-primary font-lato text-[14px] '>
-            <span className='line-through'>$26</span>
-            <span className='text-secondary  mx-2'>$14</span>
+            <span className='line-through'>${details.price}</span>
+            <span className='text-secondary  mx-2'>
+              ${details.discountprice}
+            </span>
           </p>
           <p className='w-full text-filterTxt text-[14px] mt-2 '>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla!
+            Colors: {details.colors}
           </p>
         </div>
         <div className='flex items-center gap-8 mt-4'>

@@ -51,8 +51,13 @@ export async function signin(email: string, password: string) {
   }
 }
 
-export async function getDocuments(type: string, tag: string) {
-  const q = query(collection(db, type), where('tag', 'array-contains', tag));
+export async function getDocuments(type: string, tag?: string) {
+  let q;
+  if (tag) {
+    q = query(collection(db, type), where('tag', 'array-contains', tag));
+  } else {
+    q = query(collection(db, type));
+  }
   const querySnapshot: any | undefined = await getDocs(q);
 
   const returnArr: any = [];

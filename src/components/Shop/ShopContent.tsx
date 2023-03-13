@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import {
@@ -9,6 +9,8 @@ import {
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
 import ShopCard from './ShopCard';
+import { getDocuments } from '../../Firebase/Functions';
+import isEmpty from 'lodash.isempty';
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -68,6 +70,16 @@ function classNames(...classes: string[]) {
 
 const ShopContent: React.FC = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    (async function () {
+      const docs = await getDocuments('hoodies');
+      console.log(docs);
+
+      setProducts(docs);
+    })();
+  }, []);
   return (
     <div className='bg-white font-lato mx-8 lg:mx-16'>
       <div>
@@ -357,19 +369,10 @@ const ShopContent: React.FC = () => {
 
               {/* Product grid */}
               <div className='grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:col-span-3  w-full gap-x-4  gap-y-12 '>
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
+                {products &&
+                  products.map((el: any, id: number) => {
+                    return <ShopCard key={id} details={el} />;
+                  })}
               </div>
             </div>
           </section>

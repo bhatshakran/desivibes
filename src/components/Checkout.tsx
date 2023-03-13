@@ -6,7 +6,7 @@ import {
 import type { PayPalScriptOptions } from '@paypal/paypal-js/types/script-options';
 import type { PayPalButtonsComponentOptions } from '@paypal/paypal-js/types/components/buttons';
 import React from 'react';
-import { redirect, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const paypalScriptOptions: PayPalScriptOptions = {
   'client-id':
