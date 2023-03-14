@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
                     href=''
                     className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
-                    SaaS Development
+                    Hoodies
                   </a>
                 </li>
                 <li>
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
                     href=''
                     className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
-                    Our Products
+                    Sweatshirts
                   </a>
                 </li>
                 <li>
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
                     href=''
                     className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
-                    User Flow
+                    Tshirts
                   </a>
                 </li>
                 <li>
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
                     href=''
                     className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
-                    User Strategy
+                    Hoodies
                   </a>
                 </li>
               </ul>
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
                     href=''
                     className='text-subtext hover:text-primary mb-2 inline-block text-base leading-loose'
                   >
-                    About TailGrids
+                    About Desi Vibes
                   </a>
                 </li>
                 <li>
