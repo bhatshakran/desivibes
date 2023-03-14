@@ -30,13 +30,8 @@ const Cart: React.FC = () => {
   }, [subtotal, updatedQtyVal]);
 
   const updTotal = (val: any, price: number) => {
-    console.log(val);
-    console.log(price);
-
     setUpdatedQtyVal((updatedQtyVal) => +updatedQtyVal! + +price);
   };
-
-  console.log(subtotal);
 
   if (!isEmpty(cart)) {
     return (

@@ -30,6 +30,11 @@ export function addToCart(item: any) {
     const updatedCart = [...parsedCart, item];
 
     localStorage.setItem('vibes-cart', JSON.stringify(updatedCart));
+  } else {
+    const updatedCart = [...parsedCart].filter(
+      (product: any) => product.name !== item.name
+    );
+    localStorage.setItem('vibes-cart', JSON.stringify(updatedCart));
   }
 
   console.log(localStorage.getItem('vibes-cart'));
