@@ -17,17 +17,16 @@ const Login: React.FC = () => {
   const [backEndErr, setBackEndErr] = useState('');
 
   const LoginHandler: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
     setBackEndErr('');
 
     try {
       const { user, token } = await signin(data.email, data.password);
       //set JWT token to local
       localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
       //set token to axios common header
       setAuthToken(token);
-      console.log(user);
       navigate('/');
     } catch (error: any) {
       setBackEndErr(String(error));

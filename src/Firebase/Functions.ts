@@ -2,6 +2,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import {
   collection,
@@ -13,7 +14,7 @@ import {
   where,
 } from 'firebase/firestore';
 import { app, db } from './firebase';
-import nextId from 'react-id-generator';
+import { v4 as uuid } from 'uuid';
 
 const auth = getAuth(app);
 
@@ -82,23 +83,32 @@ export async function getDocument(collection: string, id: string) {
 }
 
 export async function getLoggedInUser() {
-  const user = await getAuth().currentUser;
+  const auth = getAuth();
 
-  if (user) {
-    // User Signed In
-    console.log('User Signed In');
-    console.log(user);
-    // ...
-  } else {
-    // No user is signed in.
-    console.log('User Signed Out');
-  }
+  let getUser;
+
+  console.log(auth.currentUser);
+
+  return getUser;
 }
 
 export async function createOrderInDb(data: any) {
-  console.log(data);
-  const id = nextId();
-  await setDoc(doc(db, 'orders', id), data);
-  const getOrder = getDocument('orders', id);
+  const unique_id = uuid();
+  await setDoc(doc(db, 'orders', unique_id), data);
+  const getOrder = getDocument('orders', unique_id);
   return getOrder;
+}
+
+export async function getUserOrders(email: string) {
+  const citiesRef = collection(db, 'orders');
+  const q = query(citiesRef, where('email', '==', email));
+  const querySnapshot: any | undefined = await getDocs(q);
+  const returnArr: any = [];
+  querySnapshot.forEach((doc: any) => {
+    const id = doc._key.path.segments[doc._key.path.segments.length - 1];
+    const newData = { ...doc.data(), id };
+    returnArr.push(newData);
+  });
+
+  return returnArr;
 }

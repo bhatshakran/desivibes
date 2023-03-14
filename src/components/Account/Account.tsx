@@ -1,11 +1,27 @@
-import React, { useEffect } from 'react';
-import { getLoggedInUser } from '../../Firebase/Functions';
+import React, { useEffect, useState } from 'react';
+import { getUserOrders } from '../../Firebase/Functions';
 import Steps from '../Steps';
 
 const Account: React.FC = () => {
-  window.scroll(0, 0);
+  const [myOrders, setMyOrders] = useState();
+
   useEffect(() => {
-    getLoggedInUser();
+    (async function () {
+      try {
+        if (localStorage.getItem('user')) {
+          const user = JSON.parse(localStorage.getItem('user')!);
+          if (user?.email) {
+            const getOrders = await getUserOrders(user.email);
+            console.log(getOrders);
+            setMyOrders(getOrders);
+          } else {
+            console.log('No orders found');
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }, []);
   return (
     <section>
