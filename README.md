@@ -9,10 +9,6 @@ You can search for products like tshirts, hoodies and sweatshirts.
 Add them to the cart.
 Buy them.
 
-Docker compose is used to start react app(node-16) and Keycloak. Once its running you
-now can experiment with the React code and learn about Keycloak
-features using its administration UI.
-
 # Live app
 
 The live app is running at [DesiVibes](https://desivibes-a02a5.web.app/)
