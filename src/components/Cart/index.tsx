@@ -6,6 +6,7 @@ import CartItem from './CartItem';
 
 const Cart: React.FC = () => {
   const [cart, setCart] = useState<Array<any>>([]);
+  const [cartIsEmpty, setCartIsEmpty] = useState<boolean>(false);
   const [subtotal, setSubtotal] = useState<number>();
 
   const [updatedQtyVal, setUpdatedQtyVal] = useState<number>(0);
@@ -16,6 +17,7 @@ const Cart: React.FC = () => {
       setCart(lsCart);
     } else {
       console.log('there is nothing in cart');
+      setCartIsEmpty(true);
     }
   }, []);
 
@@ -33,7 +35,7 @@ const Cart: React.FC = () => {
     setUpdatedQtyVal((updatedQtyVal) => +updatedQtyVal! + +price);
   };
 
-  if (!isEmpty(cart)) {
+  if (!isEmpty(cart) && !cartIsEmpty) {
     return (
       <section>
         <Steps heading='Shopping Cart' pageName='Cart' />
@@ -131,7 +133,16 @@ const Cart: React.FC = () => {
       </section>
     );
   } else {
-    return <div>Loading..</div>;
+    return (
+      <section>
+        <Steps heading='Shopping Cart' pageName='Cart' />
+        <section className='py-16 lg:py-[120px] relative w-full px-24'>
+          <p className='text-3xl lg:text-[46px] font-josefinsans text-primary text-center lg:text-start leading-10'>
+            The cart seems to be empty. Please add some products to it.
+          </p>
+        </section>
+      </section>
+    );
   }
 };
 

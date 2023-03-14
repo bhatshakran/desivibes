@@ -15,10 +15,6 @@ import { app, db } from './firebase';
 
 const auth = getAuth(app);
 
-// interface QuerySnapshot {
-//   doc:
-// }
-
 export async function signup(email: string, password: string) {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -27,7 +23,6 @@ export async function signup(email: string, password: string) {
       password
     );
     const user = userCredential.user;
-    // ...
 
     const token = await userCredential.user.getIdToken();
     return { user: userCredential.user, token };
