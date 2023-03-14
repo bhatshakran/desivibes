@@ -273,9 +273,19 @@ const ShopContent: React.FC = () => {
                                     <input
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       name={`${section.id}[]`}
-                                      defaultValue={option.value}
                                       type='checkbox'
-                                      defaultChecked={option.checked}
+                                      checked={
+                                        section.id === 'color'
+                                          ? colorFilters.includes(option.value)
+                                          : section.id === 'category'
+                                          ? categoryFilters.includes(
+                                              option.value
+                                            )
+                                          : true
+                                      }
+                                      onClick={() =>
+                                        addFilter(option.value, section.name)
+                                      }
                                       className='h-4 w-4 rounded border-gray-300 text-primary focus:outline-none'
                                     />
                                     <label
