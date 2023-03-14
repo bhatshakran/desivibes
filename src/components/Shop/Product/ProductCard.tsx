@@ -3,11 +3,7 @@ import Steps from '../../Steps';
 import { getDocument } from '../../../Firebase/Functions';
 import isEmpty from 'lodash.isempty';
 import { DocumentData } from 'firebase/firestore';
-import {
-  addToCart,
-  checkIfInCart,
-  removeFromCart,
-} from '../../../helpers/AddtoCart';
+import { addToCart, checkIfInCart } from '../../../helpers/AddtoCart';
 import { Link } from 'react-router-dom';
 
 const ProductCard: React.FC = () => {

@@ -78,3 +78,17 @@ export async function getDocument(collection: string, id: string) {
 
   // return returnArr;
 }
+
+export async function getLoggedInUser() {
+  const user = await getAuth().currentUser;
+
+  if (user) {
+    // User Signed In
+    console.log('User Signed In');
+    console.log(user);
+    // ...
+  } else {
+    // No user is signed in.
+    console.log('User Signed Out');
+  }
+}

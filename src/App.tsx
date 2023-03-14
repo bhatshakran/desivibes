@@ -18,6 +18,7 @@ import Admin from './components/Admin';
 import Signup from './components/Account/Signup';
 import Checkout from './components/Checkout';
 import RouteGuard from './components/RouteGuard';
+import Account from './components/Account/Account';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path='/shop' element={<Shop />} />
             <Route path='/shop/:slug' element={<ProductCard />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/account' element={<Account />} />
             <Route
               path='/checkout'
               element={
