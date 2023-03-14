@@ -9,6 +9,7 @@ const RouteGuard = ({ children }: any) => {
 
     return flag;
   }
+  console.log(hasJWT());
 
   if (hasJWT()) {
     return children;

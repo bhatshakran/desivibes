@@ -3,16 +3,30 @@ import { signup } from '../../Firebase/Functions';
 import Steps from '../Steps';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Inputs } from './types';
+import { setAuthToken } from '../../helpers/SetAuthToken';
+import { useNavigate } from 'react-router-dom';
 
 const Signup: React.FC = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    signup(data.email, data.password);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const { user, token } = await signup(data.email, data.password);
+      //set JWT token to local
+      localStorage.setItem('token', token);
+
+      //set token to axios common header
+      setAuthToken(token);
+
+      navigate('/cart');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

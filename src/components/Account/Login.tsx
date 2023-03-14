@@ -3,6 +3,8 @@ import { signin } from '../../Firebase/Functions';
 import Steps from '../Steps';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Inputs } from './types';
+import { setAuthToken } from '../../helpers/SetAuthToken';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const {
@@ -18,8 +20,14 @@ const Login: React.FC = () => {
     setBackEndErr('');
 
     try {
-      const user = await signin(data.email, data.password);
+      const { user, token } = await signin(data.email, data.password);
+      //set JWT token to local
+      localStorage.setItem('token', token);
+
+      //set token to axios common header
+      setAuthToken(token);
       console.log(user);
+      window.location.reload();
     } catch (error: any) {
       setBackEndErr(String(error));
     }

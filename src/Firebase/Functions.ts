@@ -19,22 +19,21 @@ const auth = getAuth(app);
 //   doc:
 // }
 
-export function signup(email: string, password: string) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // ...
+export async function signup(email: string, password: string) {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    // ...
 
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-
-      console.log(errorMessage);
-      // ..
-    });
+    const token = await userCredential.user.getIdToken();
+    return { user: userCredential.user, token };
+  } catch (error) {
+    throw new Error('Signup failed. try again');
+  }
 }
 
 export async function signin(email: string, password: string) {
@@ -45,7 +44,8 @@ export async function signin(email: string, password: string) {
       password
     );
 
-    return userCredential.user;
+    const token = await userCredential.user.getIdToken();
+    return { user: userCredential.user, token };
   } catch (err) {
     throw new Error('Authentication failed. Check your password');
   }

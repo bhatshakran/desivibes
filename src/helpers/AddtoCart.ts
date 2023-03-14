@@ -2,6 +2,8 @@ import isNull from 'lodash.isnull';
 export const checkIfInCart = (details: any): boolean => {
   const parsedCart = JSON.parse(localStorage.getItem('vibes-cart')!);
 
+  if (!parsedCart) return false;
+
   let isInCart = false;
 
   parsedCart.map((el: any) => {
