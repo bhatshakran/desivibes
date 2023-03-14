@@ -19,4 +19,4 @@ The live app is running at [DesiVibes](https://desivibes-a02a5.web.app/)
 
 # Running Locally
 
-To run the React app built from this repository, you will need to run npm i && npm run build && npm run preview
+To run the React app built from this repository, you will need to run `npm i && npm run build && npm run preview`
