@@ -1,5 +1,17 @@
 import isNull from 'lodash.isnull';
+export const checkIfInCart = (details: any): boolean => {
+  const parsedCart = JSON.parse(localStorage.getItem('vibes-cart')!);
 
+  let isInCart = false;
+
+  parsedCart.map((el: any) => {
+    if (el.name === details.name) {
+      isInCart = true;
+      return;
+    }
+  });
+  return isInCart;
+};
 export function addToCart(item: any) {
   console.log('adding to cart');
 
@@ -12,14 +24,7 @@ export function addToCart(item: any) {
   const parsedCart = JSON.parse(localStorage.getItem('vibes-cart')!);
 
   // find item in the cart
-  let isInCart = false;
-
-  parsedCart.map((el: any) => {
-    if (el.name === item.name) {
-      isInCart = true;
-      return;
-    }
-  });
+  let isInCart = checkIfInCart(item);
 
   if (!isInCart) {
     const updatedCart = [...parsedCart, item];
