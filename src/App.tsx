@@ -16,9 +16,8 @@ import ProductCard from './components/Shop/Product/ProductCard';
 import Cart from './components/Cart';
 import Admin from './components/Admin';
 import Signup from './components/Account/Signup';
-import Checkout from './components/Checkout';
-import RouteGuard from './components/RouteGuard';
 import Account from './components/Account/Account';
+import SecureComp from './components/SecureComp';
 
 function App() {
   return (
@@ -36,7 +35,14 @@ function App() {
             <Route path='/shop' element={<Shop />} />
             <Route path='/shop/:slug' element={<ProductCard />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/account' element={<Account />} />
+            <Route
+              path='/account'
+              element={
+                <SecureComp>
+                  <Account />
+                </SecureComp>
+              }
+            />
             {/* <Route
               path='/checkout'
               element={

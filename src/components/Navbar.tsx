@@ -41,21 +41,23 @@ const Navbar: React.FC = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
-                        href='/account'
-                      >
-                        Account
-                      </a>
+                      {localStorage.getItem('user') ? (
+                        <a
+                          className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
+                          href='/account'
+                        >
+                          Account
+                        </a>
+                      ) : (
+                        <a
+                          className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
+                          href='/login'
+                        >
+                          Login
+                        </a>
+                      )}
                     </li>
-                    <li>
-                      <a
-                        className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
-                        href='/login'
-                      >
-                        Login
-                      </a>
-                    </li>
+
                     <li>
                       <a
                         className='text-text hover:text-secondary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex cursor-pointer'
@@ -83,6 +85,7 @@ const Navbar: React.FC = () => {
                   </ul>
                 </nav>
               </div>
+
               <div className='hidden justify-end pr-16 sm:flex lg:pr-0'>
                 <div className='relative'>
                   <input

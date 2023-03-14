@@ -1,11 +1,13 @@
 import isEmpty from 'lodash.isempty';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getUserOrders } from '../../Firebase/Functions';
 import OrderCard from '../Order/OrderCard';
 import Steps from '../Steps';
 
 const Account: React.FC = () => {
   const [myOrders, setMyOrders] = useState<Array<any>>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async function () {
@@ -26,10 +28,29 @@ const Account: React.FC = () => {
       }
     })();
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('vibes-cart');
+    localStorage.removeItem('new-order');
+    localStorage.removeItem('new-order-total');
+    navigate('/login');
+  };
   return (
     <section>
       <Steps heading='Account' pageName='Account' />
-      <section className=' px-4 lg:px-32 py-[80px]'>
+      <section className=' px-4 lg:px-32 py-[80px] relative'>
+        <div className='absolute right-4'>
+          {localStorage.getItem('user') && (
+            <button
+              className='bg-secondary px-3 py-2 rounded-md font-josefinsans text-white '
+              onClick={logout}
+            >
+              Logout
+            </button>
+          )}
+        </div>
         <h2 className=' text-primary font-josefinsans text-[42px]'>
           Your Orders
         </h2>
