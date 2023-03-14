@@ -465,6 +465,13 @@ const ShopContent: React.FC = () => {
                                     id={`filter-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
                                     type='checkbox'
+                                    checked={
+                                      section.id === 'color'
+                                        ? colorFilters.includes(option.value)
+                                        : section.id === 'category'
+                                        ? categoryFilters.includes(option.value)
+                                        : true
+                                    }
                                     onClick={() =>
                                       addFilter(option.value, section.name)
                                     }
