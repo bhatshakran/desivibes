@@ -82,7 +82,12 @@ export default function Checkout() {
         const order = JSON.parse(localStorage.getItem('new-order')!);
         const total = JSON.parse(localStorage.getItem('new-order-total')!);
         const items = JSON.parse(localStorage.getItem('vibes-cart')!);
-        const orderInDb = await createOrderInDb({ ...order, total, items });
+        const orderInDb = await createOrderInDb({
+          ...order,
+          total,
+          items,
+          buyerEmail: JSON.parse(localStorage.getItem('user')!).email,
+        });
         console.log(orderInDb);
         localStorage.setItem('new-order', '');
         localStorage.setItem('new-order-total', '');

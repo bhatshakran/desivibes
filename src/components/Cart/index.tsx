@@ -29,7 +29,7 @@ const Cart: React.FC = () => {
       <Steps heading='Shopping Cart' pageName='Cart' />
 
       {/* steps section  start*/}
-      {!isEmpty(cart) || cartIsEmpty ? (
+      {!isEmpty(cart) ? (
         <div>
           <section className='px-32 mt-12'>
             <div>

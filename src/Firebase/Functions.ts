@@ -101,7 +101,7 @@ export async function createOrderInDb(data: any) {
 
 export async function getUserOrders(email: string) {
   const citiesRef = collection(db, 'orders');
-  const q = query(citiesRef, where('email', '==', email));
+  const q = query(citiesRef, where('buyerEmail', '==', email));
   const querySnapshot: any | undefined = await getDocs(q);
   const returnArr: any = [];
   querySnapshot.forEach((doc: any) => {

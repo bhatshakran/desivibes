@@ -12,8 +12,10 @@ const Account: React.FC = () => {
       try {
         if (localStorage.getItem('user')) {
           const user = JSON.parse(localStorage.getItem('user')!);
+          console.log(user.email);
           if (user?.email) {
             const getOrders = await getUserOrders(user.email);
+            console.log(getOrders);
             setMyOrders(getOrders);
           } else {
             console.log('No orders found');
