@@ -13,7 +13,7 @@ Docker compose is used to start react app(node-16) and Keycloak. Once its runnin
 now can experiment with the React code and learn about Keycloak
 features using its administration UI.
 
-## Live app
+# Live app
 
 The live app is running at [DesiVibes](https://desivibes-a02a5.web.app/)
 
