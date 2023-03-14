@@ -29,7 +29,7 @@ const Cart: React.FC = () => {
       <Steps heading='Shopping Cart' pageName='Cart' />
 
       {/* steps section  start*/}
-      {!isEmpty(cart) || !cartIsEmpty ? (
+      {!isEmpty(cart) || cartIsEmpty ? (
         <div>
           <section className='px-32 mt-12'>
             <div>
@@ -129,6 +129,11 @@ const Cart: React.FC = () => {
             {activeStep === 'details' ? (
               <OrderSummary
                 setActiveStepToAddress={(val: string) => setActiveStep(val)}
+                clearCartCb={() => {
+                  localStorage.setItem('vibes-cart', '[]');
+                  localStorage.setItem('new-order-total', '[]');
+                  setCart([]);
+                }}
               />
             ) : activeStep === 'address' ? (
               <Address

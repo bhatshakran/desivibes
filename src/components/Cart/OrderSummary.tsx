@@ -1,9 +1,11 @@
 import isEmpty from 'lodash.isempty';
 import React, { useEffect, useState } from 'react';
-import Steps from '../Steps';
 import CartItem from './CartItem';
 
-const OrderSummary: React.FC<any> = ({ setActiveStepToAddress }) => {
+const OrderSummary: React.FC<any> = ({
+  setActiveStepToAddress,
+  clearCartCb,
+}) => {
   const [cart, setCart] = useState<Array<any>>([]);
   const [cartIsEmpty, setCartIsEmpty] = useState<boolean>(false);
   const [subtotal, setSubtotal] = useState<number>();
@@ -47,7 +49,12 @@ const OrderSummary: React.FC<any> = ({ setActiveStepToAddress }) => {
   return (
     <section className='py-16 lg:py-[120px] relative w-full '>
       <div className='mt-8  flex justify-center lg:justify-start absolute top-0 right-8'>
-        <button className='bg-secondary py-2 px-4 rounded-md text-white font-lato '>
+        <button
+          className='bg-secondary py-2 px-4 rounded-md text-white font-lato '
+          onClick={() => {
+            clearCartCb();
+          }}
+        >
           Clear Cart
         </button>
       </div>
