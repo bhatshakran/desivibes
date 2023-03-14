@@ -19,6 +19,7 @@ const Signup: React.FC = () => {
       const { user, token } = await signup(data.email, data.password);
       //set JWT token to local
       localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
       //set token to axios common header
       setAuthToken(token);
