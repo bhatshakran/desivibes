@@ -12,6 +12,15 @@ export const checkIfInCart = (details: any): boolean => {
   });
   return isInCart;
 };
+
+export function removeFromCart(item: any) {
+  const parsedCart = JSON.parse(localStorage.getItem('vibes-cart')!);
+
+  const updatedCart = [...parsedCart].filter(
+    (product: any) => product.name !== item.name
+  );
+  localStorage.setItem('vibes-cart', JSON.stringify(updatedCart));
+}
 export function addToCart(item: any) {
   console.log('adding to cart');
 
@@ -31,10 +40,7 @@ export function addToCart(item: any) {
 
     localStorage.setItem('vibes-cart', JSON.stringify(updatedCart));
   } else {
-    const updatedCart = [...parsedCart].filter(
-      (product: any) => product.name !== item.name
-    );
-    localStorage.setItem('vibes-cart', JSON.stringify(updatedCart));
+    removeFromCart(item);
   }
 
   console.log(localStorage.getItem('vibes-cart'));

@@ -9,7 +9,7 @@ const CartItem: React.FC<any> = ({ details, updateQty }) => {
       value = isNaN(value) ? 0 : value;
       value++;
       numRef.current.value = value.toString();
-      updateQty(details.discountprice);
+      updateQty(numRef.current.value, details.discountprice);
     }
   };
 
@@ -22,7 +22,7 @@ const CartItem: React.FC<any> = ({ details, updateQty }) => {
       }
       value--;
       numRef.current.value = value.toString();
-      updateQty(-Math.abs(details.discountprice));
+      updateQty(numRef.current.value, -Math.abs(details.discountprice));
     }
   };
 

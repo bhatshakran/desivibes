@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { addToCart, checkIfInCart } from '../../helpers/AddtoCart';
+import {
+  addToCart,
+  checkIfInCart,
+  removeFromCart,
+} from '../../helpers/AddtoCart';
 
 const ShopCard: React.FC<any> = ({ details }) => {
   const [inCart, setInCart] = useState(() => checkIfInCart(details));
@@ -26,16 +30,18 @@ const ShopCard: React.FC<any> = ({ details }) => {
               ${details.discountprice}
             </span>
           </p>
-          <p className='w-full text-filterTxt text-[14px] mt-2 '>
-            Colors: {details.colors}
-          </p>
         </div>
         <div className='flex items-center justify-center gap-4 mt-4'>
           <p
             className='text-primary leading-none bg-white rounded-full shadow-sm p-2 hover:bg-secondary hover:text-white cursor-pointer'
             onClick={() => {
-              addToCart(details);
-              setInCart(!inCart);
+              if (!inCart) {
+                addToCart(details);
+                setInCart(!inCart);
+              } else {
+                removeFromCart(details);
+                setInCart(!inCart);
+              }
             }}
           >
             {!inCart ? (
