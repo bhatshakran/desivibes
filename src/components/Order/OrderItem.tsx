@@ -6,7 +6,7 @@ const OrderItem: React.FC<any> = ({ details }) => {
     <article>
       <div className='w-20 flex flex-col items-center text-center'>
         <img src={details.images[0]} alt='' />
-        <h3 className='text-primary font-josefinsans'>{details.name}</h3>
+        <p className='text-primary font-josefinsans'>{details.name}</p>
       </div>
     </article>
   );

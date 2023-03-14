@@ -35,7 +35,7 @@ const Account: React.FC = () => {
           {/*- more free and premium Tailwind CSS components at https://tailwinduikit.com/ -*/}
 
           {!isEmpty(myOrders) && myOrders ? (
-            <div className='flex flex-col lg:flex-row gap-4 '>
+            <div className='flex flex-col w-full  gap-4 '>
               {myOrders.map((order: any, id: number) => {
                 return <OrderCard key={id} details={order} />;
               })}

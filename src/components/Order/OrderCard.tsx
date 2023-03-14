@@ -4,8 +4,8 @@ import OrderItem from './OrderItem';
 const OrderCard: React.FC<any> = ({ details }) => {
   console.log(details);
   return (
-    <div className=' w-full lg:w-1/2 flex border border-subtext px-2 lg:px-8 py-4 rounded-xl border-opacity-70'>
-      <div className='w-full md:w-40'>
+    <div className=' w-full lg:w-1/2  flex border border-subtext px-2 lg:px-8 py-4 rounded-xl border-opacity-70'>
+      <div className='flex flex-wrap md:w-40'>
         {details.items.map((item: any, id: number): any => {
           return <OrderItem details={item} key={id} />;
         })}
