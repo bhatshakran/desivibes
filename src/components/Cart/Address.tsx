@@ -11,6 +11,7 @@ interface AddressInputs {
 }
 
 const Address: React.FC<any> = ({ setActiveStepToPayment }) => {
+  window.scroll(0, 0);
   const {
     register,
     handleSubmit,

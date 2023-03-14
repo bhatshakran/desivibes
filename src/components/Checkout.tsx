@@ -6,7 +6,8 @@ import {
 import type { PayPalScriptOptions } from '@paypal/paypal-js/types/script-options';
 import type { PayPalButtonsComponentOptions } from '@paypal/paypal-js/types/components/buttons';
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { createOrderInDb } from '../Firebase/Functions';
 
 const paypalScriptOptions: PayPalScriptOptions = {
   'client-id':
@@ -74,12 +75,21 @@ export default function Checkout() {
   const price = 24;
 
   React.useEffect(() => {
-    if (transactionCompleted === true) {
-      console.log(transactionCompleted);
-      localStorage.setItem('new-order', '');
-      localStorage.setItem('new-order-total', '');
-      navigate('/ordercomplete');
-    }
+    (async function () {
+      if (transactionCompleted === true) {
+        console.log(transactionCompleted);
+
+        const order = JSON.parse(localStorage.getItem('new-order')!);
+        const total = JSON.parse(localStorage.getItem('new-order-total')!);
+        const items = JSON.parse(localStorage.getItem('vibes-cart')!);
+        const orderInDb = await createOrderInDb({ ...order, total, items });
+        console.log(orderInDb);
+        localStorage.setItem('new-order', '');
+        localStorage.setItem('new-order-total', '');
+        localStorage.setItem('vibes-cart', '[]');
+        navigate('/ordercomplete');
+      }
+    })();
   }, [transactionCompleted]);
 
   return (

@@ -9,9 +9,11 @@ import {
   getDoc,
   getDocs,
   query,
+  setDoc,
   where,
 } from 'firebase/firestore';
 import { app, db } from './firebase';
+import nextId from 'react-id-generator';
 
 const auth = getAuth(app);
 
@@ -91,4 +93,12 @@ export async function getLoggedInUser() {
     // No user is signed in.
     console.log('User Signed Out');
   }
+}
+
+export async function createOrderInDb(data: any) {
+  console.log(data);
+  const id = nextId();
+  await setDoc(doc(db, 'orders', id), data);
+  const getOrder = getDocument('orders', id);
+  return getOrder;
 }

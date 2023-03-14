@@ -3,6 +3,7 @@ import { getLoggedInUser } from '../../Firebase/Functions';
 import Steps from '../Steps';
 
 const Account: React.FC = () => {
+  window.scroll(0, 0);
   useEffect(() => {
     getLoggedInUser();
   }, []);
