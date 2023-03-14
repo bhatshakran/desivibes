@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ details }) => {
           <h3>
             <Link
               to={`/shop/${details.id}`}
-              className=' text-secondary font-lato   block text-xl font-semibold sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]'
+              className=' text-secondary font-lato   block text-xl font-semibold sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] hover:underline hover:text-primary'
             >
               {details.name}
             </Link>
