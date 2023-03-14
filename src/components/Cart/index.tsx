@@ -7,6 +7,8 @@ import CartItem from './CartItem';
 const Cart: React.FC = () => {
   const [cart, setCart] = useState<Array<any>>([]);
   const [subtotal, setSubtotal] = useState<number>();
+
+  const [updatedQtyVal, setUpdatedQtyVal] = useState<number>(0);
   useEffect(() => {
     // fetch cart items from localStorage
     if (localStorage.getItem('vibes-cart')) {
@@ -24,8 +26,17 @@ const Cart: React.FC = () => {
       totalPrice += +el.discountprice;
     });
 
-    setSubtotal(totalPrice);
-  }, [subtotal]);
+    setSubtotal(totalPrice + updatedQtyVal);
+  }, [subtotal, updatedQtyVal]);
+
+  const updTotal = (val: any, price: number) => {
+    console.log(val);
+    console.log(price);
+
+    setUpdatedQtyVal((updatedQtyVal) => +updatedQtyVal! + +price);
+  };
+
+  console.log(subtotal);
 
   if (!isEmpty(cart)) {
     return (
@@ -50,7 +61,9 @@ const Cart: React.FC = () => {
               <div className='grid grid-cols-1   lg:grid-cols-1 md:gap-4  mt-8 space-y-3  bg-white px-2 py-16 sm:px-6 '>
                 {cart &&
                   cart.map((item: any, id: number) => {
-                    return <CartItem key={id} details={item} />;
+                    return (
+                      <CartItem key={id} details={item} updateQty={updTotal} />
+                    );
                   })}
               </div>
             </div>
