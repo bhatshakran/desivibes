@@ -27,7 +27,7 @@ const Account: React.FC = () => {
   return (
     <section>
       <Steps heading='Account' pageName='Account' />
-      <section className='px-32 py-[80px]'>
+      <section className=' px-4 lg:px-32 py-[80px]'>
         <h2 className=' text-primary font-josefinsans text-[42px]'>
           Your Orders
         </h2>
@@ -35,7 +35,7 @@ const Account: React.FC = () => {
           {/*- more free and premium Tailwind CSS components at https://tailwinduikit.com/ -*/}
 
           {!isEmpty(myOrders) && myOrders ? (
-            <div className='flex flex-wrap gap-4 items-end'>
+            <div className='flex flex-col lg:flex-row gap-4 '>
               {myOrders.map((order: any, id: number) => {
                 return <OrderCard key={id} details={order} />;
               })}
