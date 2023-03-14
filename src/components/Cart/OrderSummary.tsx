@@ -8,6 +8,7 @@ const OrderSummary: React.FC<any> = ({ setActiveStepToAddress }) => {
   const [cartIsEmpty, setCartIsEmpty] = useState<boolean>(false);
   const [subtotal, setSubtotal] = useState<number>();
   const [updatedQtyVal, setUpdatedQtyVal] = useState<number>(0);
+  const extraCharges = 4.3 + 0.5 + 4;
   useEffect(() => {
     // fetch cart items from localStorage
     if (localStorage.getItem('vibes-cart')) {
@@ -31,6 +32,15 @@ const OrderSummary: React.FC<any> = ({ setActiveStepToAddress }) => {
 
   const updTotal = (val: any, price: number) => {
     setUpdatedQtyVal((updatedQtyVal) => +updatedQtyVal! + +price);
+  };
+
+  const addDetailsToLs = () => {
+    localStorage.setItem('new-order-total', '');
+    localStorage.setItem(
+      'new-order-total',
+      JSON.stringify(subtotal! + extraCharges)
+    );
+    setActiveStepToAddress('address');
   };
 
   if (!isEmpty(cart) && !cartIsEmpty) {
@@ -114,7 +124,7 @@ const OrderSummary: React.FC<any> = ({ setActiveStepToAddress }) => {
                   </span>
                 </div>
                 <div
-                  onClick={() => setActiveStepToAddress('address')}
+                  onClick={() => addDetailsToLs()}
                   //   to='/checkout'
                   role='button'
                   //   state={subtotal! + 4.3 + 0.5 + 4}

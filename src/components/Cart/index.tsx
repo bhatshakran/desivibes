@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Checkout from '../Checkout';
+import RouteGuard from '../RouteGuard';
 
 import Steps from '../Steps';
 import Address from './Address';
@@ -124,7 +125,11 @@ const Cart: React.FC = () => {
             setActiveStepToPayment={(val: string) => setActiveStep(val)}
           />
         ) : (
-          activeStep === 'payment' && <Checkout />
+          activeStep === 'payment' && (
+            <RouteGuard>
+              <Checkout />
+            </RouteGuard>
+          )
         )}
       </div>
     </section>

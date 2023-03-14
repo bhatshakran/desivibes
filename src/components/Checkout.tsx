@@ -59,15 +59,14 @@ function Button({ price, setTransactionCompleted }: Props) {
   };
   return (
     <>
-      {isPending ? <h2>Load Smart Payment Button...</h2> : null}
+      {isPending ? <h2>Loading... Smart Payment Button...</h2> : null}
       <PayPalButtons {...paypalbuttonTransactionProps} />
     </>
   );
 }
 
 export default function Checkout() {
-  const location = useLocation();
-  const { state } = location;
+  const total = localStorage.getItem('new-order-total');
   const navigate = useNavigate();
 
   const [transactionCompleted, setTransactionCompleted] = React.useState(false);
@@ -77,13 +76,15 @@ export default function Checkout() {
   React.useEffect(() => {
     if (transactionCompleted === true) {
       console.log(transactionCompleted);
+      localStorage.setItem('new-order', '');
+      localStorage.setItem('new-order-total', '');
       navigate('/ordercomplete');
     }
   }, [transactionCompleted]);
 
   return (
     <div className='mt-20 py-[120px] flex items-center flex-col w-full '>
-      <h2>Your total is: {state}$</h2>
+      <h2>Your total is: {total}$</h2>
       <PayPalScriptProvider options={paypalScriptOptions}>
         <Button
           setTransactionCompleted={setTransactionCompleted}

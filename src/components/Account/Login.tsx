@@ -7,6 +7,7 @@ import { setAuthToken } from '../../helpers/SetAuthToken';
 import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -27,7 +28,7 @@ const Login: React.FC = () => {
       //set token to axios common header
       setAuthToken(token);
       console.log(user);
-      window.location.reload();
+      navigate('/');
     } catch (error: any) {
       setBackEndErr(String(error));
     }

@@ -37,14 +37,14 @@ function App() {
             <Route path='/shop/:slug' element={<ProductCard />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/account' element={<Account />} />
-            <Route
+            {/* <Route
               path='/checkout'
               element={
                 <RouteGuard>
                   <Checkout />
                 </RouteGuard>
               }
-            />
+            /> */}
           </Route>
           <Route path='/admin' element={<Admin />} />
         </Routes>

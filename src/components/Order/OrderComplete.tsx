@@ -3,6 +3,7 @@ import Steps from '../Steps';
 import tick from '../../images/tick.png';
 import checklist from '../../images/checklist.png';
 import clock from '../../images/clock.png';
+import { Link } from 'react-router-dom';
 
 const OrderComplete: React.FC = () => {
   return (
@@ -21,9 +22,12 @@ const OrderComplete: React.FC = () => {
             completed within 3-6 hours. You will receive an email confirmation
             when your order is completed.
           </p>
-          <button className='bg-secondary mt-8 font-lato text-[18px] text-white px-4 py-3 rounded-md hover:bg-opacity-90'>
-            Continue Shopping
-          </button>
+          <Link
+            to='/account'
+            className='bg-secondary mt-8 font-lato text-[18px] text-white px-4 py-3 rounded-md hover:bg-opacity-90'
+          >
+            Go to your orders
+          </Link>
           <div className='absolute -top-2 -left-9'>
             <img src={clock} alt='' className='w-[70px]' />
           </div>
